@@ -1,0 +1,320 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Selectors">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Selectors </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    
+    .reveal .two-columns{
+      display: flex;
+    }
+    .reveal .two-columns > * {
+      flex: 1;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <p><code><em>display: flex;</em></code></p>
+          
+        </section>
+        <section>
+           <p>För att fördela <code><em>flex-items</em></code> säger vi hur de ska fördelas på huvudaxeln samt cross axis</p>
+           <img src="https://cdn.css-tricks.com/wp-content/uploads/2011/08/flexbox.png" alt="flexbox.">
+           <a class="reference" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>
+         </section>
+        <section>
+           <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
+  &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <pre><code class="language-css">.parent{
+  display: flex;
+}
+.child{
+  flex: 1;       /* every child should take equal space */
+  height: 200px; /* we must also have a height */
+}</code></pre>
+         </section>
+         <section>
+           <p><code><em>justify-content</em></code> placerar ut flex items på huvudaxeln</p>
+           <p><code><em>align-items</em></code> placerar ut flex items längs den motsatta axeln</p>
+           <img src="https://cdn.css-tricks.com/wp-content/uploads/2011/08/flexbox.png" alt="flexbox.">
+         </section>
+         <section>
+           <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS-tricks: A Complete Guide To Flexbox</a>
+         </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><strong>Selectors</strong></h1>
+        </section>
+        <section>
+          <ul>
+            <li><code><em>&lt;tag&gt;</em></code></li>
+            <li><code><em>.class</em></code></li>
+            <li><code><em>#id</em></code></li>
+          </ul>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;article class=&quot;post&quot;&gt;
+  &lt;h1&gt; Title &lt;/h1&gt;
+  &lt;p class=&quot;post-body&quot;&gt;This is &lt;em&gt;some&lt;/em&gt; text&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+          <pre><code class="language-css">.post {}               /* 0, 0, 1, 0 */
+.post h1 {}            /* 0, 0, 1, 1 */  
+.post h1 em {}         /* 0, 0, 1, 2 */
+.post .post-body em {} /* 0, 0, 2, 1 */</code></pre>
+        </section>
+        <section>
+          <p>Välja flera element: <code><em>,</em></code></p>
+          <pre><code class="language-css">h1, h2, h3, h4 {}</code></pre> 
+          <p class="fragment fade-down">Välja flera element inuti en klass</p>
+          <pre class="fragment fade-down"><code class="language-css">.post h1, h2, h3, h4 {}</code></pre> 
+        </section>
+        <section>
+          <p>Välja ett element med en klass (<code><em>&&</em></code>)</p>
+          <pre><code class="language-css">div.grid {}</code></pre>
+          <p class="fragment fade-down">Går för det mesta att undvika</p>
+          <p class="fragment fade-down">Gör en stark koppling mellan class och element, vi kan behöva använda klassen på ett annat element</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;header class=&quot;header&quot;&gt;
+  &lt;h1 class=&quot;header-title&quot;&gt; Title &lt;/h1&gt;         
+&lt;/header&gt;</code></pre>
+          <pre><code class="language-css">.header h1 {}    /* 0,0,1,1 */</code></pre>
+          <pre><code class="language-css">.header-title {} /* 0,0,1,0 */</code></pre>
+          <pre><code class="language-css">.header * {}     /* 0,0,1,0 */</code></pre>
+          <p class="fragment fade-down">Asterisk (<code><em>*</em></code>) väljer allt</p>
+        </section>
+        <section>
+          <p>Descendant combinator</p>
+          <pre><code class="language-css">.header h1 {}    /* 0,0,1,1 */</code></pre>
+          <p>Väljer alla <code><em>h1</em></code> inuti <code><em>.header</em></code></p>
+        </section>
+        <section>
+          <p><strong>Child combinator</strong></p>
+          <pre><code class="language-css">div > p {}</code></pre>
+          <p>Väljer alla element som är direkta barn av ett element</p>
+        </section>
+
+         <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="child-des" contenteditable>ul > li {
+  border: 3px solid red;
+}</code></pre>
+
+            <div id="child-des">
+              <ul>
+                <li> Unordered list item</li>
+                <li> Unordered list item
+                  <ol>
+                    <li> Ordered List item</li>
+                    <li> Not direct child</li>
+                  </ol>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p><strong>Adjacent sibling combinator</strong></p>
+          <pre><code class="language-css">div + p {}</code></pre>
+          <blockquote>The + combinator selects adjacent siblings. This means that the second element directly follows the first, and both share the same parent.</blockquote>
+        </section>
+
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="adjecent" contenteditable>li + li {
+  border: 3px solid red;
+}</code></pre>
+
+            <div id="adjecent">
+              <ul>
+                <li> Unordered list item</li>
+                <li> Unordered list item
+                  <ol>
+                    <li> Ordered List item</li>
+                    <li> Not direct child</li>
+                  </ol>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p><strong>General sibling combinator</strong></p>
+          <pre><code class="language-css">div ~ p {}</code></pre>
+          <blockquote>The ~ combinator selects siblings. This means that the second element follows the first (though not necessarily immediately), and both share the same parent.</blockquote>
+        </section>
+
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="general" contenteditable>li ~ li {
+  border: 3px solid red;
+}</code></pre>
+
+            <div id="general">
+              <ul>
+                <li> Unordered list item</li>
+                <li> Unordered list item</li>
+                <li> Unordered list item</li>
+                <li> Unordered list item</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section> 
+
+      <section>
+        <section>
+          <h3><em>Pseudo-classes & Pseudo-elements</em></h3>
+        </section>
+        <section>
+          <p><em>Pseudo</em></p>
+          <blockquote>
+not actually but having the appearance of; pretended; false or spurious; sham.
+almost, approaching, or trying to be.
+          </blockquote>
+        </section>
+        <section>
+          <p><strong>Pseudo-classes</strong></p>
+          <ul>
+            <li><code><em>:link</em></code></li>
+            <li><code><em>:hover</em></code></li>
+            <li><code><em>:visited</em></code></li>
+          </ul>
+          <p class="fragment fade-down">Definierar olika <code><em>state</em></code>, i vilket tillstånd element är</p>
+        </section>
+
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="hover" contenteditable>h1 {
+  color: red;
+}
+h1:hover {
+ color: green;
+}</code></pre>
+
+            <div id="hover">
+              <h1>Hover me</h1>
+            </div>
+          </div>
+        </section>
+        <section>
+          <p>Vi kan även använda pseudo-classes för att välja specifika element baserat på deras relation till resten av DOM</p>
+          <p>T.ex. välja utifrån vilken ordning barnet kommer i</p>
+          <ul class="fragment fade-down">
+            <li><code><em>:nth-child()</em></code></li>
+            <li><code><em>:only-child</em></code></li>
+            <li><code><em>:last-child</em></code></li>
+            <li><code><em>:nth-last-child()</em></code></li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="hover" contenteditable>li:nth-child(2){
+ color: red;
+}</code></pre>
+
+            <div id="hover">
+              <ul>
+                <li>First li-item</li>
+                <li>Second li-item</li>
+                <li>Third li-item</li>
+                <li>Fourth li-item</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p><strong>Pseudo-elements</strong></p>
+          <ul>
+            <li><code><em>::after</em></code></li>
+            <li><code><em>::before</em></code></li>
+            <li><code><em>::first-letter</em></code></li>
+            <li><code><em>::first-line</em></code></li>
+          </ul>
+          <p class="fragment fade-down">Funkar även med enkla <code><em>:</em></code></p>
+        </section>
+        <section>
+          <p><em><code>::after</code></em>/ <code><em>::before</em></code> lägger till innehåll efter eller före ett element</p>
+          <pre><code class="language-css">div::after{
+  content: "";
+}</code></pre>
+        <p class="fragment fade-down">Gör det möjligt att lägga till element efter andra element</p>
+        </section>
+        <section>
+          <p>Ha inget viktigt innehåll i <code><em>::after/::before</em></code></p>
+          <p class="fragment fade-down">Innehållet är inte tillgängligt, går inte att markera</p>
+          <p class="fragment fade-down">Vi frångår vår uppdelning av innehåll/presentation</p>
+          <p class="fragment fade-down">Dock väldigt bra metoder, använd gärna</p>
+        </section>
+
+        <section>
+          <p>Validering</p>
+          <p> <a href="https://jigsaw.w3.org/css-validator/">CSS validator</a></p>
+          <p> <a href="https://validator.w3.org/">HTML validator</a></p>
+        </section>
+      </section>
+      
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+            Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

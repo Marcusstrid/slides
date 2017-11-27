@@ -1,0 +1,396 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="CSS">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> CSS </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><strong>CSS</strong></h1>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <blockquote>
+            Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG or XHTML). CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.
+          </blockquote>
+          <a class="reference" href="https://www.w3.org/Style/CSS/Overview.en.html">https://www.w3.org/Style/CSS/Overview.en.html</a>
+        </section>
+        <section>
+          <p><em>CSS rule</em></p>
+          <pre><code class="language-css">p {
+  color: lightsalmon;
+}</code></pre>
+          <pre class="fragment fade-down"><code class="language-css">selector {
+  property: value /* css declaration */
+}</code></pre>
+        </section>
+        <section>
+          <blockquote>
+            A property paired with a value is called a <em>CSS declaration</em>. CSS declarations are put within CSS Declaration Blocks. And finally, CSS declaration blocks are paired with selectors to produce <strong>CSS Rulesets (or CSS Rules)</strong>.
+          </blockquote>
+          <a class="reference" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Syntax">https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Syntax</a>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;CSS linking!&lt;/title&gt;
+    &lt;!-- relation: interpret as style sheet --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Goodby world!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;CSSing&lt;/title&gt;
+    &lt;style&gt;
+      h1 {
+        color: lightsalmon;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Goodbye World!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+        <section>
+          <p><em>Internal stylesheet</em></p>
+          <p>Får användas när:</p>
+          <ul>
+            <li>Kritiskt CSS som måste laddas snabbt</li>
+            <li>Du kan inte redigera CSS-filen direkt</li>
+          </ul>
+        </section>
+        <section>
+          <p>Inline style</p>
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;&#x1f624;&#x1f620;&#x1f611;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 style=&quot;color: lightsalmon;&quot;&gt;Goodbye World!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+        <section>
+          <p><element>Inline style</element></p>
+          <p>Good practice att separera struktur från styling i olika filer</p>
+          <p class="fragment fade-down"><em>Får användas när:</em></p>
+          <ul class="fragment fade-down">
+            <li>Sista utväg när inget annat alternativ finns</li>
+            <li>Ibland när css ska ändras med JavaScript</li>
+          </ul>
+        </section>
+        <section>
+          <img style="background: none; box-shadow: none" src="https://mdn.mozillademos.org/files/11781/rendering.svg" alt="DOM rendering">
+        </section>
+        <section>
+          <img style="background: none; box-shadow: none" src="https://i.imgur.com/RxC1UXa.png">
+          <a class="reference" href="https://twitter.com/davatron5000/status/873578585394696192">https://twitter.com/davatron5000/status/873578585394696192</a>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h1><em>Selector</em></h1>
+        </section>
+        <section>
+          <p>Tre primära sätt att koppla CSS till HTML</p>
+          <ul>
+            <li><code><em>&lt;tag&gt;</em></code></li>
+            <li><code><em>class</em></code></li>
+            <li><code><em>id</em></code></li>
+          </ul>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;p&gt; My P &lt;/p&gt;
+&lt;p class=&quot;paragraph&quot;&gt; My P &lt;/p&gt;
+&lt;p id=&quot;paragraph&quot;&gt; My P &lt;/p&gt;</code></pre>
+        <pre><code class="language-css">tag {
+  /* only name means tag */
+ }
+.class {
+  /* dot means class */
+}   
+#id {
+  /* hashtag means id */
+}</code></pre>
+        </section>
+        <section>
+          <p>Styla främst med <em><code>class</code></em> och <code><em>tag</em></code></p>
+          <p><strong><code>id</code></strong> är främst för JavaScript</p>
+          <p class="fragment fade-down">Inline style är ?</p>
+        </section>
+        <section>
+          <p><em>Inherit</em></p>
+          <blockquote>
+            a process whereby something, typically information or knowledge, is successively passed on.
+          </blockquote>
+        </section>
+        <section>
+          <pre><code class="language-css">p {
+  color: teal;
+  font-size: 24px;
+}
+
+p {
+  color: lightsalmon;
+}</code></pre>
+        <p class="fragment fade-down"><code><em>font-size</em></code> står kvar, men den "senaste" ändringen används, color skrivs över</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div&gt;
+  &lt;p&gt; Muh P &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <pre><code class="language-css">div {
+  color: lightsalmon;
+}</code></pre>
+        <p class="fragment fade-down">färgen ärvs till barnet</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div&gt;
+  &lt;p&gt; Muh P &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <pre><code class="language-css">div p {
+  color: lightsalmon;
+}</code></pre>
+        <p class="fragment fade-down">Alla p som ligger i div</p>
+        </section>
+        <section>
+          <p>Vilket värde som används baseras på 3 saker</p>
+          <ul>
+            <li>Importance</li>
+            <li>Specificity</li>
+            <li>Source order</li>
+          </ul>
+        </section>
+        <section>
+          <p><code><em>!importance</em></code></p>
+          <p>Sista utvägen</p>
+          <p class="fragment fade-down">Använd helst inte alls</p>
+          <pre><code class="language-css">.full-width {
+  margin: 0px !important;
+}</code></pre>
+        <p class="fragment fade-down">I princip omöjig att skriva över, vi måste ha möjligheten att skriva över värden</p>
+        </section>
+        <section>
+          <p>Specificity</p>
+          <a href="https://specificity.keegan.st/">https://specificity.keegan.st/</a>
+        </section>
+        <section>
+          <p>Styla med <em>class</em> helst</p>
+          <p class="fragment fade-down">Använd <code><em>ID</em></code> främst för t.ex. JavaScript</p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Boxmodellen</em></h1>
+        </section>
+        <section>
+          <img src="https://mdn.mozillademos.org/files/8685/boxmodel-(3).png" alt="Boxmodellen.">
+        </section>
+        <section>
+          <p><em>Shorthands</em></p>
+          <pre><code class="language-css">margin-top: 1rem;
+margin-right: 1rem;
+margin-bottom: 1rem;
+margin-left: 1rem; </code></pre>
+        </section>
+        <section>
+          <pre><code class="language-css">margin: top right bottom left;</code></pre>
+          <pre><code class="language-css">margin: 1rem 1rem 1rem 1rem;</code></pre>
+          <pre><code class="language-css">margin: top/bottom left/right;</code></pre>
+          <pre><code class="language-css">margin: 1rem 2rem;</code></pre>
+          <pre><code class="language-css">margin: all;</code></pre>
+          <pre><code class="language-css">margin: 1rem;</code></pre>
+        </section>
+        <section>
+          <p><em>Collapsing margins</em></p>
+          <p>När två <code><em>margins</em></code> går emot varandra försvinner den ena</p>
+          <p>Som när vi t.ex. har <code>margin-bottom</code> på det övre elementet och <code>margin-top</code> på det undre</p>
+          <a class="reference" href="https://css-tricks.com/what-you-should-know-about-collapsing-margins/">https://css-tricks.com/what-you-should-know-about-collapsing-margins/</a>
+        </section>
+        <section>
+          <p data-height="265" data-theme-id="dark" data-slug-hash="pJyxQa" data-default-tab="css,result" data-user="css-tricks" data-embed-version="2" data-pen-title="Collapsing Margins: Vertical" class="codepen">See the Pen <a href="https://codepen.io/team/css-tricks/pen/pJyxQa/">Collapsing Margins: Vertical</a> by CSS-Tricks (<a href="https://codepen.io/css-tricks">@css-tricks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+        </section>
+        <section>
+          <p>Boven</p>
+          <pre><code class="language-css">* { 
+  box-sizing: border-box;
+}</code></pre> 
+          <a class="reference" href="http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts">http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts</a>
+        </section>
+        <section>
+          <p>Boxmodellen enlight CSS Specifikationen</p>
+          <img src="http://blog.teamtreehouse.com/wp-content/uploads/2014/06/box-model-illustration.png" alt="">
+        </section>
+        <section>
+          <p>Boxmodellen enlight Internet Explorer 🤡</p>
+          <img src="http://blog.teamtreehouse.com/wp-content/uploads/2014/06/box-sizing-illustration.png" alt="">
+          <p class="fragment fade-down">Samt om vi använder: </p>
+          <pre><code class="language-css">* { 
+  box-sizing: border-box;
+}</code></pre> 
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Position</em></h1>
+        </section>
+        <section>
+          <pre><code class="language-css"> /* relative to itself */
+position: relative</code></pre> 
+          <pre><code class="language-css"> /* absolute pixel value */
+position: absolute</code></pre> 
+          <pre><code class="language-css"> /* absolute viewport pixel value */
+position: fixed</code></pre> 
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>CSS Units</em></h1>
+        </section>
+        <section>
+          <p>Allting översätts i slutändan till pixlar</p>
+          <p class="fragment fade-down"><em>Computed values</em></p>
+          <p class="fragment fade-down">Men vi ska försöka använda relativa enheter</p>
+        </section>
+        <section>
+          <pre><code class="language-css">article {
+  height: 100px;  /* actual pixels */
+  height: 100%;   /* height of parent */
+  height: 100rem; /* 1 * default browser font-size */
+  height: 100em;  /* 1 * current font-size */
+  height: 100vh;  /* 100% of viewport */
+  height: 100cm;  /* centimeter, not recommended */
+  height: 100in;  /* inches, not recommended */
+}</code></pre>
+        </section>
+        <section>
+          <p><em>Använd främst <code>%</code>, </code>rem</code> samt <code>em</code></em></p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>float</em></h1>
+        </section>
+        <section>
+          <blockquote>The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. <span class="fragment highlight-red">The element is removed from the normal flow of the web page, though still remaining a part of the flow. </span></blockquote>
+          <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">https://developer.mozilla.org/en-US/docs/Web/CSS/float</a>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/RRm3RSa.png" alt="spec">
+          <img class="fragment fade-down" src="https://i.imgur.com/Osk1Cj7.png" alt="w3c">
+        </section>
+        <section>
+          <pre><code class="language-css">.box {
+  float: left;
+}</code></pre>
+<pre><code class="language-css">.box {
+  float: right;
+}</code></pre>
+<pre><code class="language-css">.box {
+  float: none;
+}</code></pre>
+        <p class="fragment fade-down">Låt elementet ligga bredvid även fast det är <code><em>display: block</em></code></p>
+        </section>
+        <section>
+          <img src="https://css-tricks.com/wp-content/csstricks-uploads/web-layout.png">
+        </section>
+        <section>
+          <p>Element kan fortsätta flyta</p>
+          <p>Vi måste ibland stoppa flödet</p>
+          <pre><code class="language-css">.element-after-float {
+  clear: both; /* both sides */
+}</code></pre>
+<pre><code class="language-css">.element-after-float {
+  clear: left; /* only left side clear */
+}</code></pre>
+<pre><code class="language-css">.element-after-float {
+  clear: left; /* only right side clear */
+}</code></pre>
+        </section>
+        <section>
+          <p>"Hacket"</p>
+          <pre><code class="language-css">.clearfix {
+  clear: both;
+}</code></pre>
+          <p>Klassen används på ett element som kommer efter ett element som flyter. Stoppar kommande element från att flyta på.</p>
+        </section>
+        <section>
+          <p><em>Det blir systemkollaps</em></p>
+          <p>Om ett förälderelement enbart innehåller element som flyter kommer föräldern tappa sin höjd</p>
+          <img src="http://scottnix.com/blog/wp-content/uploads/2012/12/html-float-collapse.png">
+        </section>
+        <section>
+          <p>Använd i sådana fall clearfix</p>
+          <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
+  &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+      </section>
+      
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'}
+        ]
+      });
+    </script>
+  </body>
+  </html>

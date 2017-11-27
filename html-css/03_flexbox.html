@@ -1,0 +1,215 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Flexbox">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Flexbox </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><em>Recap</em></h1>
+        </section>
+        <section>
+          <p><em>Display</em></p>
+          <p>Display påverkar hur ett element visas på sidan. Standardinställningen är olika för varje element.</p>
+          <ul>
+            <li><code><em>none</em></code> - gör ett element osynligt</li>
+            <li><code><em>block</em></code>   - visar elementet som ett block-element</li>
+            <li><code><em>inline</em></code>    - visar elementet som ett inline-element</li>
+            <li><code><em>inline-block</em></code>  - visar elementet som ett inline-element, som man kan
+        ange storlek på</li>
+          </ul>
+        </section>
+        <section>
+          <p><em>CSS Units</em></p>
+          <p>Nice att ha</p>
+          <ul>
+            <li><em><code>%</code></em> - procent av föräldern</li>
+            <li><em><code>em</code></em> - utgår från fontstorleken: varierar</li>
+            <li><em><code>rem</code></em> - utgår från root-fontstorleken: 16px</li>
+            <li><em><code>vh</code></em> - viewheight: hela skärmens höjd</li>
+            <li><em><code>vw</code></em> - viewwidth: hela skärmens bredd</li>  
+          </ul>
+        </section>
+        <section>
+          <p>Styla främst med <em><code>class</code></em></p>
+          <p><strong>Håll specificiteten låg</strong></p>
+          <ul>
+            <li><code><em>#id</em></code> - 100</li>
+            <li><code><em>.class</em></code> - 10</li>
+            <li><code><em>nav</em></code> - 1</li>
+            <li>inline styles - 1000</li>
+          </ul>
+        </section>
+        <section>
+          <p>Använd <code><em>!important</em></code> sparsamt</p>
+          <pre><code class="language-css">.error-message{
+  color: red !important;
+}</code></pre> 
+        <p class="fragment fade-down">Accepterat scenarion ovan</p> 
+        </section>
+        <section>
+          <p>Använd flera klasser om du ska ha variation</p>
+          <pre><code class="language-css">.header{
+  width: 100%;
+  height: 150px;
+}
+.background-primary{
+  background-color: #f0c;
+}</code></pre>
+        <pre><code class="language-html">&lt;header class=&quot;header background-primary&quot;&gt;
+  &lt;h1&gt;Header&lt;/h1&gt;
+&lt;/header&gt;</code></pre>
+        <p class="fragment fade-down">Sätt grundläggande CSS som form</p>
+        <p class="fragment fade-down">Lägg sedan på färg</p>
+        </section>
+        <section>
+          <pre><code class="language-css">float: left;
+float: right;
+float: none;</code></pre> 
+          <pre><code class="language-css">.clearfix {
+  clear: both;
+}</code></pre>
+        <p class="fragment fade-down">Använd clearfix för att förhindra kollapsande föräldrar och få element att sluta flyta.</p>
+        </section>
+      </section>
+
+      <section>
+         <section>
+           <h1><strong>Flexbox</strong></h1>
+         </section>
+         <section>
+           <p>"CSS flexible box" kom med CSS3 och har tidigare inte haft fullständigt stöd i alla webbläsare</p>
+          <p>Gör det enklare att anpassa sidor efter olika skärmstorlekar</p>
+          <p>Mycket enklare att placera ut element i komplexa layouter</p>
+         </section>
+         <section>
+           <p><a href="https://caniuse.com">https://caniuse.com/</a></p>
+           <img src="https://i.imgur.com/ya2AkBl.png">
+         </section>
+         <section>
+           <p>Flex container: ett element som innehåller andra element, som ska läggas ut med flex.</p>
+            <p>För att göra det måste man ange två properties:</p>
+            <ul>
+              <li><code><em>display: flex</em></code> (för att säga att elementet ska använda flex)</li>
+              <li><code><em>flex-direction:</em></code> (row eller column) för att specificera åt vilket håll containerns children ska läggas ut </li>
+            </ul>
+            <p class="fragment fade-down"><code>Clear</code>, <code>float</code> och <code>vertical-align</code> gäller inte för flexbox</p>
+         </section>
+         <section>
+           <blockquote>Barn till en <em>flex container</em> kallas <strong>flex items</strong> och har propertys som styr hur mycket plats de ska ta i förhållande till containern. Children till en flex container kan också vara flex containers.</blockquote>
+         </section>
+         <section>
+           <img src="https://css-tricks.com/wp-content/uploads/2014/05/flex-container.svg" alt="A picture of a nice parent">
+           <img src="https://css-tricks.com/wp-content/uploads/2014/05/flex-items.svg" alt="A picture of some nice kids.">
+         </section>
+         <section>
+           <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
+  &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <pre><code class="language-css">.parent{
+  display: flex;
+}
+.child{
+  flex: 1;       /* every child should take equal space */
+  height: 200px; /* we must also have a height */
+}</code></pre>
+         </section>
+         <section>
+           <p>Flex item: ett element som har en flex container.</p>
+           <ul>
+              <li><code><strong>flex</strong></code> - shorthand av <code>flex-grow</code>, <code>flex-shrink</code> och <code>flex-basis</code></li>
+              <li class="fragment fade-down"><code><strong>flex-basis</strong></code> - utgångsstorleken för elementet, <em>auto</em> om webbläsaren ska få bestämma det själv</li>
+              <li class="fragment fade-down"><code><strong>flex-grow</strong></code> - hur mycket elementet växer i förhållande till andra element när det tillgängliga utrymmet växer</li>
+              <li class="fragment fade-down"><code><strong>flex-shrink</strong></code> - hur mycket elementet minskar i förhållande till andra element när det tillgängliga utrymmet krymper</li>
+           </ul>
+         </section>
+         <section>
+           <p>Om alla flex items i en container ska ändra storlek i samma takt: </p>
+           <pre><code class="language-css">flex: 1 1 auto;</code></pre>
+           <p>Om en flex item alltid ska ha konstant storlek stänger man av både grow och shrink och sätter basis till storleken:</p>
+           <pre><code class="language-css">flex: 0 0 200px;</code></pre>
+         </section>
+         <section>
+           <p>Flex container bestämmer om alla flex items ska läggas i en <code>columns</code> eller <code>row</code>: default är <code><em>row</em></code></p>
+           <pre><code class="language-css">.parent{
+  display: flex;
+  flex-direction: column;
+}</code></pre>
+          <p class="fragment fade-down">Ovan kod ändrar till att allt ligger i en kolumn</p>
+         </section>
+         <section>
+           <p>För att fördela <code><em>flex-items</em></code> säger vi hur de ska fördelas på huvudaxeln samt cross axis</p>
+           <img src="https://cdn.css-tricks.com/wp-content/uploads/2011/08/flexbox.png" alt="flexbox.">
+           <a class="reference" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>
+         </section>
+         <section>
+           <p>Fördela längs huvudaxeln: <code><em>justify-content</em></code></p>
+           <ul>
+             <li><code><em>flex-start</em></code> - allting i början</li>
+             <li><code><em>flex-end</em></code> - allting i slutet</li>
+             <li><code><em>center</em></code> - centrerar innehållet</li>
+             <li><code><em>space-around</em></code> - fördelar innehållet jämnt</li>
+             <li><code><em>space-between</em></code> - fördelar innehållet jämnt</li>
+           </ul>
+         </section>
+         <section>
+           <p>Fördela längs cross axis: <code><em>align-items</em></code></p>
+           <ul>
+             <li><code><em>flex-start</em></code> - allting i början</li>
+             <li><code><em>flex-end</em></code> - allting i slutet</li>
+             <li><code><em>center</em></code> - allting centrerat</li>
+             <li><code><em>baseline</em></code> - utgår från textens baseline</li>
+           </ul>
+         </section>
+         <section>
+           <h4><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</h4>
+         </section>
+       </section>
+      
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'}
+        ]
+      });
+    </script>
+  </body>
+  </html>

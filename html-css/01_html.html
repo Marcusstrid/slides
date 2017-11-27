@@ -1,0 +1,217 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Intro HTML">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Intro HTML </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    #intro-text{
+      font-family: monospace;
+      text-shadow: 1px 1px 0 #999, 
+                    2px 2px 0 #999, 
+                    3px 3px 0 #999,
+                    4px 4px 0 #999,
+                    5px 5px 0 #999,
+                    6px 6px 0 #999,
+                    7px 7px 0 #999,
+                    8px 8px 0 #999,
+                    9px 9px 0 #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-background="#0000ff">
+        <img style="background:none; box-shadow: none; position: absolute; top: 0; right: 0;" src="https://zippy.gfycat.com/ElderlyJovialFinwhale.gif" alt="A rotating globe."> 
+        <marquee scrollamount="20"><h1 id="intro-text">HTML &amp; CSS</h1></marquee>
+      </section>
+
+      <section>
+        <section>
+          <h1><strong>Innehåll</strong></h1>
+        </section>
+        <section>
+          <ul>
+            <li class="fragment fade-down">Grundläggande HTML</li>
+            <li class="fragment fade-down">CSS Positioneringstekniker</li>
+            <li class="fragment fade-down">Responsiv design</li>
+            <li class="fragment fade-down">Progressive Enhancement</li>
+            <li class="fragment fade-down">SASS - CSS Preprocessor</li>
+          </ul>
+        </section>
+        <section>
+          <p><strong>Examination</strong></p>
+          <ul>
+            <li><em>Individuell: 2 delar (v.49 / v.51)</em>
+            <ul><li>Skapa hemsida baserad på färdigt innehåll + <strong>peer review</strong></li></ul></li>
+            <li><em>Individuell: (v.1)</em>
+            <ul><li>Skapa hemsida med två CSS-ramverk: jämföra</li></ul></li>
+            <li><em>Grupp:</em>
+            <ul><li>Skapa hemsida för eran egen IT-byrå utifrån mockups</li></ul></li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>HTML</em></h1>
+        </section>
+        <section data-background-image="http://vignette3.wikia.nocookie.net/starwars/images/a/ae/Hyperspace_falcon.png">
+          <h1 style="color: white; background: rgba(0,0,0, 0.5);"><span class="fragment">HyperText</span><br /><span class="fragment">Markup</span> <span class="fragment"> Language</span></h1>
+        </section>
+        <section>
+          <blockquote>
+            A markup language is a type of language used to <span class="fragment highlight-red">annotate</span> text and embed tags in accurately styled electronic documents, irrespective of computer platform, operating system, application or program.
+          </blockquote>
+          <p class="fragment fade-down" style="font-size: 1.5rem;"><em>annotate</em> add notes to (a text or diagram) giving explanation or comment.</p>
+          <a class="reference" href="https://www.techopedia.com/definition/2668/markup-language">https://www.techopedia.com/definition/2668/markup-language</a>
+        </section>
+        <section data-background="#211e1e">
+          <img style="background:none; box-shadow: none;" src="https://mdn.mozillademos.org/files/9347/grumpy-cat-small.png">
+          <a style="color:white;" class="reference" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started">https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started</a>
+        </section>
+        <section>
+          <p>HTML har två representationer</p>
+          <p class="fragment fade-down">Det vi ser, tolkningen av browsern</p>
+          <p class="fragment fade-down">Källkoden ~ "DOM"-representationen</p>
+          <img class="fragment fade-down" style="background:none; box-shadow: none; position: absolute; top: -40; right: -40;" src="https://i.imgur.com/DEKKDTn.png">
+        </section>
+        <section>
+          <ul>
+            <li>HTML är till för struktur, inte styling</li>
+            <li>Vissa element har default styling</li>
+            <li>Använd inte t.ex. <em><code>&lt;h1&gt;&lt;/h1&gt;</code></em> bara för att få större text, använd då css.</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        
+      </section>
+      <section>
+        <section>
+          <h1><strong>Grundläggande element</strong></h1>
+        </section>
+        <section>
+          <p>Textbaserat</p>
+          <ul>
+            <li><code><em>&lt;h1&gt; - &lt;h6&gt;</em></code> - rubriker</li>
+            <li><code><em>&lt;p&gt;</em></code> - Paragrafer</li>
+          </ul>
+        </section>
+        <section>
+          <p>Attribut</p>
+          <pre><code class="language-html">&lt;a href=&quot;https://github.com&quot;&gt;github.com&lt;/a&gt;
+          </code></pre>
+          <p class="fragment fade-down">Alla <strong>nyckel/värde</strong>-par på HTML-element är attribut</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;a href=&quot;https://github.com&quot;&gt;github.com&lt;/a&gt;
+          </code></pre>
+          <ul>
+            <li>Endast ett mellanslag mellan elementet och attributet</li>
+            <li>Inget mellanslag mellan namnet (href) och likamedtecknet</li>
+            <li>Inget mellanslag mellan namnet likamedtecknet och värdet <code><em>""</em></code></li>
+            <li class="fragment fade-down">Använd <strong>"double quotes"</strong> runt värdet</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <p>Alla element har inneboende egenskaper: färdig css</p>
+        <p class="fragment fade-down"><strong>User agent stylesheet</strong></p>
+        <p class="fragment fade-down">HTML ska inte användas till styling men har fortfarande alltid någon styling by default 😳</p>
+        <p class="fragment fade-down">Var inte rädd att skriva över default styling</p>
+        <p class="fragment fade-down">"Konvertera" dock inte element till andra element</p>
+      </section>
+      <section>
+        <section>
+          <h1><strong>Semantisk HTML</strong></h1>
+        </section>
+        <section>
+          <p>HTML är till för struktur</p>
+          <pre><code class="language-html">&lt;div&gt;
+  &lt;div&gt;
+    &lt;h1&gt; Bloggtitel &lt;/h1&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p class="fragment fade-down"><code><em>&lt;div&gt;</em></code> används för att märka upp lådor för CSS, men hjälper oss inte att märka upp innehåll för HTML</p>
+        </section>
+        <section>
+          <p>HTML är till för struktur</p>
+          <pre><code class="language-html">&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt; Bloggtitel &lt;/h1&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna 
+    aliqua.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+        <p class="fragment fade-down">Använd HTML5 inbyggda element för att tydligare märka upp innehåll</p>
+        </section>
+        <section>
+          <ul>
+            <li><code><em>&lt;nav&gt;</em></code></li>
+            <li><code><em>&lt;header&gt;</em></code></li>
+            <li><code><em>&lt;footer&gt;</em></code></li>
+            <li><code><em>&lt;article&gt;</em></code></li>
+            <li><code><em>&lt;aside&gt;</em></code></li>
+          </ul>
+          <p>Om inget "matchar", använd <code><em>&lt;div&gt;</em></code></p>
+        </section>
+        <section>
+          <p><em>Inline semantiska element</em></p>
+          <ul>
+            <li><code><em>&lt;em&gt;</em></code></li>
+            <li><code><em>&lt;strong&gt;</em></code></li>
+            <li><code><em></em></code></li>
+          </ul>
+          <p class="fragment fade-down">Om inget annat "matchar", använd <code><strong>&lt;span&gt;</strong></code>, t.ex. om elementet enbart ska användas för styling</p>
+        </section>
+        <section>
+          <p>Varför?</p>
+        </section>
+      </section>
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'}
+        ]
+      });
+    </script>
+  </body>
+  </html>

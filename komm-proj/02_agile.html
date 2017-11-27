@@ -1,0 +1,98 @@
+<html>
+<head>
+  <!-- <base href="https://jesperorb.github.io/revealjs/"> -->
+  <base href="file:///Users/jesperorb/projects/revealjs/">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Agile">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Agile </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <section>
+          <h1><strong>Agile</strong></h1>
+        </section>
+        <section>
+          <p>Under 90-talet började man gå emot traditionella sätt att utveckla mjukvara - <strong>började utforma agila arbetssätt</strong></p>
+          <p class="fragment fade-down">Olika representater träffades 2001 och kom överens om termen <strong>Agile</strong></p>
+          <p class="fragment fade-down">Kallade sig för <em>Agile Alliance</em></p>
+          <p class="fragment fade-down">Skapade ett <strong>Manifest</strong> och en uppsättning principer att utgå ifrån.</p>
+        </section>
+        <section>
+          <h3>Sektvarning 🤔</h3>
+        </section>
+        <section>
+          <ul>
+            <li class="fragment fade-down"><em>Individuals and interactions</em> over processes and tools</li>
+            <li class="fragment fade-down"><em>Working software</em> over comprehensive documentation</li>
+            <li class="fragment fade-down"><em>Customer collaboration</em> over contract negotiation</li>
+            <li class="fragment fade-down"><em>Responding to change</em> over following a plan</li>
+          </ul>
+        </section>
+        <section>
+          <p>Agile principles</p>
+          <a href="http://agilemanifesto.org/principles.htmlhttp://agilemanifesto.org/principles.html">http://agilemanifesto.org/principles.html</a>
+        </section>
+        <section>
+          <p><em>Upplägg för dagen</em></p>
+          <ul>
+            <li><strong>Förmiddag:</strong>
+              <ul>
+                <li>Gruppövning: scrum case studies</li>
+              </ul>
+            </li>
+            <li><strong>Eftermiddag:</strong> 
+              <ul>
+                <li>Gruppövning: Arbeta med ett färdigt case</li>
+              </ul>
+            </li>
+          </ul>
+          <p class="fragment fade-down">Sitt var ni vill, skriv på Slack om ni vill att jag ska komma och hjälpa</p>
+          <p class="fragment fade-down">Kolla av med mig innan ni går för dagen</p>
+          <p class="fragment fade-down">Skicka ert <em>GitHub</em>-användarnamn via Slack till mig</p>
+        </section>
+      </section>        
+
+      </div>
+    </div>
+    <!-- reveal.js scripts -->
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        transition: 'zoom',
+        height: '90%',
+        width: '70%',
+        controls: true,
+        progress: true,
+        history: true,
+        keyboard: true,
+        overview: true,
+        center: true,
+        dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+          { src: 'plugin/notes/notes.js', async: true },
+          {src : 'lib/prismjs/prism.js'},
+          {src : 'js/print.js'}
+          ]
+        });
+      </script>
+    </body>
+    </html>

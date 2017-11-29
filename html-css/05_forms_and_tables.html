@@ -1,0 +1,346 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Forms & Tables">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Forms & Tables </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    
+    .reveal .two-columns{
+      display: flex;
+    }
+    .reveal .two-columns > * {
+      flex: 1;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><strong>Forms</strong></h1>
+        </section>
+        <section>
+          <p>Med formulär kan vi hämta in data från användaren</p>
+          <p>I ren <code><em>HTML</em></code> kan vi inte göra så mycket med informationen</p>
+          <pre class="fragment fade-down"><code class="language-js">const inputValue = document.getElementById('input').value</code></pre>
+          <p class="fragment fade-down">Vi kan dock strukturera upp den på rätt sätt:<strong> för backend och javascript</strong></p>
+        </section>
+      <section>
+        <pre><code class="language-html">&lt;form action=&quot;login.php&quot; method=&quot;POST&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt; 
+  &lt;input type=&quot;submit&quot; value=&quot;Skicka&quot;&gt;
+&lt;/form&gt;</code></pre> 
+      <p class="fragment fade-down"><code><em>action</em></code> och <code><em>method</em></code> är för att skicka informationen till backend</p>
+      <p class="fragment fade-down">Vi fokuserar på att strukturera tillgängliga former</p>
+      </section>
+      <section>
+        <p><code><em>input</em></code> behöver inte ligga i ett formulär men gör ofta det för att vi ska kunna gruppera den data som finns i inputfälten</p>
+        <p class="fragment fade-down">Viktigt när vi väl ska skicka informationen eller plocka informationen med JavaScript: username & password ska skickas samtidigt</p>
+        <p class="fragment fade-down"><strong>Vi kollar på några vanliga inputtyper och hur vi stylar dem</strong></p>
+      </section>  
+        <section>
+          <p>Ur tillgänglighetsperspektiv behöver vi oftast märka upp inputfält</p>
+          <pre><code class="language-html">&lt;form&gt;
+  &lt;label for=&quot;todo&quot;&gt;Add Todo&lt;/label&gt;
+  &lt;input type=&quot;text&quot; name=&quot;todo&quot; id=&quot;todo&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Skicka&quot;&gt;  
+&lt;/form&gt;</code></pre>
+          <p class="fragment fade-down">input måste länkas till deras <code><em>labels</em></code> via <code><strong>ID</strong></code></p>
+          <p class="fragment fade-down"><code><em>name</em></code> är till för att skicka värdet till backend</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;input 
+  type=&quot;text&quot; 
+  name=&quot;username&quot; 
+  id=&quot;username&quot; 
+  value=&quot;zero_cool&quot;
+  placeholder=&quot;Input username&quot;&gt;</code></pre>
+          <p class="fragment fade-down"><code><em>value</em></code> faktiskt värde som plockas via t.ex. JavaScript (<code>element.value</code>)</p>
+          <p class="fragment fade-down"><code><em>placeholder</em></code>Kan inte hämtas ut, bara grafiskt</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;form&gt;
+  &lt;label for=&quot;birthdate&quot;&gt;Birthdate&lt;/label&gt;
+  &lt;input  type=&quot;text&quot; 
+          name=&quot;birthdate&quot; 
+          id=&quot;birthdate&quot;
+          placeholder=&quot;YYMMDD&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Send&quot;&gt;
+&lt;/form&gt;</code></pre>
+          <p class="fragment fade-down"><code><em>placeholder</em></code> kan vara bra för att ge extra info om fältet till användaren </p>
+          <p class="fragment fade-down">Använd ibland istället för <code><em>label</em></code></p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;label for=&quot;human&quot;&gt;Human&lt;/label&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;human&quot; id=&quot;human&quot;&gt;
+
+&lt;label for=&quot;other&quot;&gt;Other&lt;/label&gt;
+&lt;input type=&quot;radio&quot; name=&quot;other&quot; id=&quot;other&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;other&quot; id=&quot;other&quot;&gt;</code></pre>
+          <p class="fragment fade-down">Ge radio buttons samma <code><em>name</em></code> för att välja mellan dem</p>
+          <input type="checkbox" name="">
+          <input type="radio" name="type">
+          <input type="radio" name="type">
+          <input type="radio" name="type">
+        </section>
+        <section>
+          <p>Typer av text-input</p>
+          <ul>
+            <li><code><strong>url</strong></code></li>
+            <li><code><strong>number</strong></code></li>
+            <li><code><strong>search</strong></code></li>
+            <li><code><strong>tel</strong></code></li>
+            <li><code><strong>email</strong></code></li>
+          </ul>
+          <p class="fragment fade-down">Mest synligt på mobila enheter</p>
+        </section>
+        <section>
+          <p><strong>Andra inputtyper</strong></p>
+          <pre><code class="language-html">&lt;select&gt;
+  &lt;option value=&quot;Cherry&quot;&gt; Cherry &lt;/option&gt;            
+  &lt;option value=&quot;Banana&quot;&gt; Banana &lt;/option&gt;            
+&lt;/select&gt;</code></pre>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;textarea cols=&quot;10&quot; rows=&quot;20&quot;&gt;&lt;/textarea&gt;</code></pre>
+          <p>Textarea kan sättas med både <code><em>rows/cols</em></code> samt höjd och bredd i CSS, kan vara bra att köra båda.</p>
+        </section>
+        <section>
+          <blockquote><strong>cols</strong>: The visible width of the text control, in average character widths. If it is specified, it must be a positive integer. If it is not specified, the default value is 20 (HTML5).</blockquote>
+          <blockquote><strong>rows</strong>The number of visible text lines for the control.</blockquote>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;datalist id=&quot;fruits&quot;&gt;
+  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;
+  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;
+&lt;/datalist&gt;
+&lt;input type=&quot;text&quot; name=&quot;fruits&quot; list=&quot;fruits&quot;&gt;</code></pre>
+        <p class="fragment fade-down">Sökbar select, som autocomplete</p>
+        <p class="fragment fade-down">Fungerar inte i Safari</p>
+        </section>
+
+        <section>
+          <p>Vissa input-typer är <em>stylade native</em></p>
+          <p class="fragment fade-down">Innebär att operativsystemet bestämmer vilken styling som appliceras</p>
+          <p class="fragment fade-down">Oberäkneligt och svårt att styla dessa element</p>
+          <ul class="fragment fade-down">
+            <li><code><em>checkbox</em></code></li>
+            <li><code><em>radio</em></code></li>
+            <li><code><em>select/option</em></code></li>
+          </ul>
+        </section>
+
+        <section>
+          <p>Om ni måste ta bort styling: <code><strong>appearance: none;</strong></code></p>
+          <pre><code class="language-css">input{
+  -webkit-apperance: none;
+  -moz-apperance: none;
+  appearance: none;
+}</code></pre>
+          <p class="fragment fade-down">Ojämnt stöd och fungerar inte i alla browsers</p>
+          <p class="fragment fade-down">Tar bort styling helt, du måste ersätta all styling</p>
+        </section>
+        
+      </section> 
+
+      <section>
+        <section>
+          <h1><em>HTML5 validering</em></h1>
+        </section>
+        <section>
+          <p>HTML5 har vissa attribut som sköter valideringen i frontend åt oss</p>
+          <p class="fragment fade-down">Vi måste alltid validera i backend ändå men här kan vi säkra upp och ge feedback till användaren enkelt</p>
+        </section>
+        <section>
+          <p><em><code>required</code></em></p>
+          <pre><code class="language-html">&lt;form&gt;
+  &lt;label for=&quot;username&quot;&gt;Username&lt;/label&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; required&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Skicka&quot;&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+        <section>
+<form style="display: flex; width: 30%; margin: 0 auto; flex-direction: column;">
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" required>
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" required>
+  <input type="submit" value="Skicka">
+</form>
+        </section>
+        <section>
+          <p>Regex pattern</p>
+          <pre><code class="language-html">&lt;form&gt;
+  &lt;label  for=&quot;password&quot;&gt;Password&lt;/label&gt;
+  &lt;input  type=&quot;password&quot; 
+          name=&quot;password&quot; 
+          id=&quot;password&quot; 
+          required
+          pattern=&quot;(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Skicka&quot;&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+        <section>
+          <p><strong>Vanligt använda regex mönster</strong></p>
+          <a href="http://html5pattern.com/">http://html5pattern.com/</a>
+        </section>
+        <section>
+          <p><strong>Gruppövning (1h): skapa "slutför köp"-formulär</strong></p>
+          <ol>
+            <li><em>Research</em>: Undersök existerande sidor, hur många och vilka input-fält används</li>
+            <li><em>Diskussion</em>: vilka element måste ni använda och hur ska det vara strukturerat</li>
+            <li><em>Implementering</em>: skapa ett grundlägganed formulär i HTML och CSS som du skulle vilja använda för att slutföra ett köp.</li>
+          </ol>
+          <p class="fragment fade-down">Kolla under dagens lektion på studentportalen för länktips</p>
+        </section>
+      </section>
+
+
+      <section>
+        <section>
+          <h3><em>Pseudo-klasser för input</em></h3>
+        </section>
+        <section>
+          <p>Pseudo-classer</p>
+          <ul>
+            <li><code><em>:active</em></code> - när elementet är nedtryckt t.ex.</li>
+            <li><code><em>:focus</em></code> - när elementet är fokuserat, tabbat till</li>
+            <li><code><em>:hover</em></code> - när man har musen över</li>
+          </ul>
+        </section>
+        <section>
+          <p>Fler tillstånd</p>
+          <ul>
+            <li><code><em>:enabled</em></code> - element som har enabled</li>
+            <li><code><em>:disabled</em></code> - element som har disabled</li>
+            <li><code><em>:checked</em></code> - ikryssad checkbox t.ex.</li>
+            <li><code><em>:indeterminate</em></code> - inte ikryssad</li>
+            <li><code><em>:valid</em></code> - rätt input</li>
+            <li><code><em>:invalid</em></code> - fel input</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em><code>table</code></em></h1>
+        </section>
+        <section>
+          <p>Specifika table-egenskaper</p>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="table1" contenteditable>table {
+  border-collapse: collapse;
+  border-spacing: 1rem;
+}
+
+th, td {
+ border: 2px solid red;
+}</code></pre>
+
+            <div id="table1">
+              <table>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>zero_cool</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>master_89</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section>
+          <p>Specifika table-attribut</p>
+          <ul>
+            <li><code><em>colspan</em></code> - hur många columns en cell ska ta</li>
+            <li><code><em>rowspan</em></code> - hur många rows en cell ska ta</li>
+          </ul>
+          <pre><code class="language-html">&lt;td colspan=&quot;2&quot;&gt;&lt;/td&gt;
+&lt;td rowspan=&quot;2&quot;&gt;&lt;/td&gt;
+&lt;td colspan=&quot;2&quot; rowspan=&quot;2&quot;&gt;&lt;/td&gt;</code></pre>
+        </section>
+        <section>
+          <p>Semantisk markup</p>
+          <pre><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;th&gt;header&lt;/th&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;td&gt;Data&lt;/td&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;th&gt;footer&lt;/th&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+        </section>
+        <section>
+          <p><strong>Tillgänglighet</strong></p>
+          <p class="fragment fade-down">Definiera om headingen är för en column eller för en row</p>
+          <pre class="fragment fade-down"><code class="language-html">&lt;th scope=&quot;col&quot;&gt;&lt;/th&gt;
+&lt;th scope=&quot;row&quot;&gt;&lt;/th&gt;</code></pre>
+          <p class="fragment fade-down">Lägg till en titel</p>
+          <p class="fragment fade-down"><code><em>&lt;caption&gt;Title&lt;/caption&gt;</em></code></p>        
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+            Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

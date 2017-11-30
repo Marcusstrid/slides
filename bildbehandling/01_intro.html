@@ -1,0 +1,210 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Bildbehandling för webbutvecklare">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Bildbehandling för webbutvecklare</title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    
+    .reveal .two-columns{
+      display: flex;
+    }
+    .reveal .two-columns > * {
+      flex: 1;
+      height: 100%;
+    }
+
+    .reveal section img {
+      background: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><strong>Bildbehandling <br>för <br>webbutvecklare</strong></h1>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Innehåll</em></h1>
+        </section>
+        <section>
+          <ul>
+            <li class="fragment fade-down">Kunna skapa <span class="fragment highlight-red">grafiska resurser anpassat efter webben</span></li>
+            <li class="fragment fade-down">Färdighet i att arbeta med designskisser och prototyper, därigenom anpassa någons
+design för att göra fungerande frontend.</li>
+            <li class="fragment fade-down">Grundläggande kunskaper att hantera verktyget Photoshop</li>
+            <li class="fragment fade-down">Förståelse för vad som är enkelt/möjligt/lämpligt att konvertera till frontendkod</li>
+            <li class="fragment fade-down">kunna ge feedback och förslag på funktionella designförändringar. </li>
+          </ul>
+        </section>
+        <section>
+          <img height="200px" src="https://helpx.adobe.com/content/dam/help/mnemonics/ps_cc_app_RGB.svg" alt="A picture of the logo PS">
+          <img height="200px" src="https://helpx.adobe.com/content/dam/help/mnemonics/ai_cc_app_RGB.svg" alt="A picture of the logo AI.">
+          <p>En liten del av det hela</p>
+        </section>
+        <section>
+          <p><em>Examination</em></p>
+          <p><strong>3 mindre individuella kopplat till enskilda lektioner</strong></p>
+          <p><strong>1 gruppuppgift: presenteras nästa vecka</strong></p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Komponenter</em></h1>
+        </section>
+        <section>
+          <p><strong>Övergripande layout</strong></p>
+        </section>
+        <section>
+          <pre><code class="language-js">function calculate(a, operator, b){
+  total = 0;
+  if(operator === '-'){
+    total =  a - b;
+  }
+  if(operator === '+'){
+    total = a + b;
+  }
+  if(operator === '/'){
+    total = a / b;
+  }
+}</code></pre>
+        <p class="fragment fade-down">Statisk kod, det är ett enda stort kodblock</p>
+        </section>
+        <section>
+          <pre><code class="language-js">function calculate(a, operator, b){
+  switch(operator){
+    case: '-': 
+      return subtract(a,b);
+    case: '+':
+      return add(a,b);
+    case: '/':
+      return divide(a,b);
+  }
+}</code></pre>
+        <p class="fragment fade-down"><code><em>subtract/add/divide</em></code> fungerar även var för sig</p>
+        </section>
+        <section>
+          <p>Programmering handlar mycket om problemlösning</p>
+          <p class="fragment fade-down">Dela upp ett större problem i mindre delproblem</p>
+          <h4 class="fragment fade-down"><em>Don't Repeat Yourself</em></h4>
+          <p class="fragment fade-down">Varför inte applicera samma tänk på gränssnitt? 🤔</p>
+        </section>
+        <section>
+          <h1><em>Atomic Design</em></h1>
+        </section>
+        <section data-background="https://i.imgur.com/BWtiXr2.png">
+          
+        </section>
+        <section data-background="https://i.imgur.com/R9padHV.png">
+        </section>
+        <section data-background-image="https://i.imgur.com/XdIZiaU.png">
+          
+        </section>
+        <section data-background="#f4f2dc">
+          <p><strong>Atomer</strong></p>
+          <img src="https://i.imgur.com/Tt1iS4i.png">
+        </section>
+        <section data-background="#f4f2dc">
+          <p><strong>Molekyler</strong></p>
+          <img src="https://i.imgur.com/t9maTvy.png">
+        </section>
+        <section data-background="#f4f2dc">
+          <p><strong>Organismer</strong></p>
+          <img src="https://i.imgur.com/cNaqf8Y.png">
+        </section>
+        <section data-background="#f4f2dc">
+          <p><strong>Mallar / Templates</strong></p>
+          <img src="https://i.imgur.com/CDfXz1F.png">
+        </section>
+        <section data-background="#f4f2dc">
+          <p><strong>Sidor / Pages</strong></p>
+          <img src="https://i.imgur.com/OBiew09.png">
+        </section>
+        <section>
+          <h3><a href="https://demo.patternlab.io/">http://demo.patternlab.io/</a></h3>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/wL3NCzd.png">
+        </section>
+        <section data-background="https://i.imgur.com/aBnQTjV.png">
+          <h1 class="fragment fade-down">🤔</h1>   
+        </section>
+        <section>
+          <p><em>Övning</em>: Interface Audit</p>
+          <p>Gruppuppgift</p>
+          <ul>
+            <li>Granska <a href="https://nordea.se">nordea.se</a> och <a href="https://seb.se">seb.se</a></li>
+            <li>Vilka olika versioner av samma atom kan ni hitta?</li>
+            <li>Ta screenshots och gör ett kollage av bilderna, lägg upp i Slack</li>
+          </ul> 
+        </section>
+        <section>
+          <p><em>Övning</em>: skissa molekylen</p>
+          <strong>Produkt på e-handelssida för kläder</strong>
+          <ol>
+            <li>Arbeta nedifrån: atom -> molekyl</li>
+            <li>Tänker er att molekyler ska ligga i en <em>lista</em> eller ett grid</li>
+            <li>Gör både för mobil och desktop</li>
+            <li><strong>Börja på rutat papper, skissa den slutgiltiga versionen på grid-papper och sätt upp på tavlan</strong></li>
+          </ol>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+            Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

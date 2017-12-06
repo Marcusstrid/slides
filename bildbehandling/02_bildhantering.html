@@ -1,0 +1,227 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Bildhantering">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Bildhantering</title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    
+    .reveal .two-columns{
+      display: flex;
+    }
+    .reveal .two-columns > * {
+      flex: 1;
+      height: 100%;
+    }
+
+    .reveal section img {
+      background: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><strong>Bildhantering</strong></h1>
+          <p>Var lite schyst mot dina användare</p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <p>Varför ska jag slösa <em>2mb</em> av data på en headerbild när jag bara vill läsa artikeln där texten väger några <em>byte</em>?</p>
+        </section>
+        <section data-background-image="https://pbs.twimg.com/media/DQTInw8UQAAVpHs.jpg">
+        </section>
+        <section>
+          <img src="https://i.imgur.com/nSK054n.png">
+        </section>
+        <section>
+          <img src="https://i.imgur.com/fNhbMYW.png">
+        </section>
+        <section>
+          <img src="https://i.imgur.com/UtgIgyK.png">
+        </section>
+        <section>
+          <ul>
+            <li><strong><code>.png</code></strong> - Portable Network Graphics</li>
+            <li><strong><code>.jpeg</code></strong> - Joint Photographic Experts Group</li>
+            <li><strong><code>.gif</code></strong> -  Graphics Interchange Format</li>
+            <li><strong><code>.webp</code></strong> - Web Picture</li>
+          </ul>
+        </section>
+        <section>
+          <style type="text/css">
+            tr:nth-child(even){
+              background-color: hsla(0, 30%, 60%, 1);
+              color: #f5f5f5;
+            }
+          </style>
+          <table style="font-size: 1.3rem;"><tbody><tr><td>&nbsp;</td>
+<td>Category</td>
+<td>Palette</td>
+<td>Use for</td>
+</tr><tr><td>JPG</td>
+<td>Lossy</td>
+<td>Millions of colors</td>
+<td>Still Images<br>
+      Photography</td>
+</tr><tr><td>GIF</td>
+<td>Lossless</td>
+<td>Maximum 256 colors</td>
+<td>Simple animations<br>
+      Graphics with flat colors<br>
+      Graphics without gradients</td>
+</tr><tr><td>PNG-8</td>
+<td>Lossless</td>
+<td>Maximum 256 colors</td>
+<td>Similar to GIF<br>
+      Better transparency but no animation<br>
+      Great for icons</td>
+</tr><tr><td>PNG-24</td>
+<td>Lossless</td>
+<td>Unlimited colors</td>
+<td>Similar to PNG-8<br>
+      Handles still images and transparency</td>
+</tr><tr><td>SVG</td>
+<td>Vector/lossless</td>
+<td>Unlimited colors</td>
+<td>Graphics/logos for web<br>
+      Retina/high-dpi screens</td>
+</tr></tbody></table>
+        <a class="reference" href="https://www.sitepoint.com/gif-png-jpg-which-one-to-use/">https://www.sitepoint.com/gif-png-jpg-which-one-to-use/</a>
+        </section>
+        <section>
+          <p><strong>Lossy</strong> compression - Tar bort pixlar </p>
+          <p><strong>Lossless</strong></p> compression - Komprimerar istället för att ta bort
+        </section>
+        <section>
+          <p><a href="">ImageOptim / FileOptimizer</a></p>
+          <p class="fragment fade-down">Tar bort metadata utan att kompromissa med kvalité</p>
+          <p class="fragment fade-down">Komprimerar existerande data istället för att ta bort</p>
+        </section>
+        <section>
+          <p>Bilder?</p>
+          <p><a href="http://allthefreestock.com/">http://allthefreestock.com/</a></p>
+          <p><a href="https://unsplash.com/">https://unsplash.com/</a></p>
+        </section>
+        <section>
+          <h3><em>Online-verktyg</em></h3>
+          <p><a href="https://cloudinary.com">Cloudinary</a>
+          <p>Bearbeta bilder via URL</p>
+          <img src="/Users/jesperorb/Dropbox/Screenshots/Screenshot 2017-12-06 08.37.02.png">
+          <p class="fragment fade-down"><em>w_1920</em></p>
+        </section>
+        <section>
+          <p><em>Övning: Grafisk resurs-granskning</em></p>
+          <p>Granska vilka bilder/format/storlekar som större hemsidor använder</p>
+          <p class="fragment fade-down"><a href="https://github.com/fend17/bildbehandling/blob/master/exercises/graphic_resource_audit.md">https://github.com/fend17/bildbehandling/exercises</a></p>
+          <p class="fragment fade-down">Finns även på Studentportalen under dagens lektion</p>
+        </section>
+      </section>
+
+
+      <section>
+        <section>
+          <h1><em>På webben</em></h1>
+        </section>
+        <section>
+          <p><em>srcset</em></p>
+          <pre><code class="language-html">&lt;img  src=&quot;cool.jpg&quot; 
+      srcset=&quot;cool_500w.jpg 500w,
+              cool_1000w.jpg 1000w&quot;
+      alt=&quot;A picture of something cool.&quot;&gt;</code></pre>
+      <p><code><em>srcset</em></code> låter browsern välja vilken bild som bäst passar din skärm</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;img src=&quot;cool.jpg&quot; 
+      srcset=&quot;cool_500w.jpg 500w,
+            cool_1000w.jpg 1000w&quot;
+      sizes="(min-width: 40em) 33.3vw, 100vw"
+      alt=&quot;A picture of something cool.&quot;&gt;</code></pre>
+        <p><code><em>sizes</em></code> bestämmer hur stor del av skärmen din bild ska ta i olika lägen.</p>
+        </section>
+        <section>
+          <h3><em>Video</em></h3>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;video src=&quot;cool.mp4&quot; loop muted autoplay&gt;
+&lt;/video&gt;</code></pre> 
+        </section>
+        <section>
+          <p>Multiple sources</p>
+          <pre><code class="language-html">&lt;video src=&quot;cool.mp4&quot; loop muted autoplay&gt;
+  &lt;source src=&quot;cool.mp4&quot;   type=&quot;video/mp4&quot;&gt;
+  &lt;source src=&quot;cool.webm&quot;  type=&quot;video/webm&quot;&gt;
+&lt;/video&gt;</code></pre>
+        </section>
+        <section>
+          <p><strong>Videokonverterar</strong></p>
+          <ul>
+            <li><code><a href="https://handbrake.fr/">Handbrake</a></code> - konvertera till MP4 & MKV</li>
+            <li><code><a href="http://www.mirovideoconverter.com/">Miro Converter</a></code> - Konvertera till WEBM & OGV</li>
+          </ul>
+        </section>
+        <section>
+          <p><strong>Övning: optimera hemsidan</strong></p>
+          <p>På detta repo ligger en dåligt optimerad hemsida</p>
+          <p><em>Ladda ner och optimera bilderna med de verktyg vi använt</em></p>
+          <p><a href="https://github.com/fend17/optimize-images">https://github.com/fend17/optimize-images</a></p>
+          <p><strong>Vinnaren får stickers</strong></p>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+            Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,190 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Bildhantering">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Bildhantering</title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      background: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><strong>Raster versus Vector</strong></h1>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <p>Vi har två huvudsakliga format</p>
+        </section>
+        <section>
+          <img src="https://res.cloudinary.com/ddxwdqwkr/image/upload/c_scale,w_900/v1502469573/essential-image-optimization/rastervvector.png" alt="A comparison of Raster versus vector.">
+        </section>
+        <section>
+          <blockquote>In the context of screens, DPI (Dots Per Inch) or PPI (Pixels Per Inch) refer to the <em>number of device pixels per inch</em>, also called “pixel density”. The higher the number, the smaller the size of the pixels, so graphics are perceived as more crisp and less pixelated.</blockquote>
+          <a class="reference" href="http://dpi.lv/">http://dpi.lv/</a>
+        </section>
+        <section>
+          <blockquote>A pixel in itself has no size or physical representation, it can only carry value through its relationship with the screen physical size, creating the resolution, or PPI. Understand this and screen density will have no secret for you.</blockquote>
+          <a class="reference" href="http://sebastien-gabriel.com/designers-guide-to-dpi/">http://sebastien-gabriel.com/designers-guide-to-dpi/</a>
+        </section>
+        <section>
+          <img src="http://sebastien-gabriel.com/designers-guide-to-dpi/images/blue-square-01.png">
+          <a class="reference" href="http://sebastien-gabriel.com/designers-guide-to-dpi/images/blue-square-01.png">http://sebastien-gabriel.com/designers-guide-to-dpi/images/blue-square-01.png</a>
+        </section>
+        <section>
+          <p><strong>Vilken storlek har en pixel?</strong></p>
+        </section>
+        <section>
+          <img src="http://sebastien-gabriel.com/designers-guide-to-dpi/images/density-relationship.jpg" alt="The size of a pixel">
+        </section>
+        <section>
+          <img style="max-height: 100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Inkscape.logo.svg/2000px-Inkscape.logo.svg.png">
+          <img style="max-height: 100px" src="https://helpx.adobe.com/content/dam/help/mnemonics/ai_cc_app_RGB.svg">
+          <img src="https://www.sketchapp.com/images/press/logo-light.svg" style="max-height: 200px;">
+        </section>
+        <section>
+          <p><strong>En bra ebok om bildoptimering</strong></p>
+          <p><a href="https://images.guide/">https://images.guide/</a></p>
+        </section>
+        </section>
+        <section>
+          <section>
+            <h1><em>SVG</em></h1>
+            <p>Scalable Vector Graphics</p>
+          </section>
+          <section>
+            <p><strong>En bra ebok om SVG</strong></p>
+            <p><a href="http://svgpocketguide.com/book">http://svgpocketguide.com/book</a></p>
+          </section>
+          <section>
+            <p>SVG baseras på ett kordinatsystem istället för fasta pixlar</p>
+            <img src="https://d33wubrfki0l68.cloudfront.net/fedcd70d34fc3a5dea2369e727b6a8e7081de43b/3496e/images/initial-coordinate-systems.jpg" style="max-height: 300px">
+            <p class="fragment fade-down">Liknande som CSS och <code><em>position: absolute</em></code></p>
+            <a class="reference" href="https://www.sarasoueidan.com/blog/svg-coordinate-systems/">https://www.sarasoueidan.com/blog/svg-coordinate-systems/</a>
+          </section>
+          <section>
+            <p>Man definierar punkter <em>x,y</em> på kordinatsystemet</p>
+            <p>Sedan drar man streck eller fyller i utrymmet mellan dessa punkter</p>
+            <p class="fragment fade-down"><strong>Inga fasta pixlar sätts</strong></p>
+          </section>
+          <section data-background-size="contain" data-background-image="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bitmap_VS_SVG.svg/2000px-Bitmap_VS_SVG.svg.png"></section>
+          <section>
+            <pre><code class="language-svg">&lt;svg&gt;
+  &lt;rect width=&quot;200&quot; height=&quot;200&quot; fill=&quot;black&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;</code></pre>
+          </section>
+          <section>
+            <p>Ändringar i syntax</p>
+            <ul>
+              <li><em><code>stroke</code></em> - istället för border</li>
+              <li><em><code>fill</code></em> - istället för background</li>
+            </ul>
+            <p class="fragment fade-down">CSS kan kopplas till SVG</p>
+          </section>
+          <section>
+            <pre><code class="language-svg">&lt;svg&gt;
+  &lt;circle cy=&quot;20&quot; cx=&quot;20&quot; r=&quot;20&quot;&gt;&lt;/circle&gt;              
+&lt;/svg&gt;</code></pre>
+          <p class="fragment fade-down">cy/cx är kordinaterna för mitten på cirkeln</p>
+          <p class="fragment fade-down">Övriga former utgår från <strong>top-left</strong></p>
+          </section>
+          <section>
+            <pre><code class="language-svg">&lt;svg&gt;
+  &lt;line x1=&quot;10&quot; y1=&quot;10&quot; x2=&quot;50&quot; y2=&quot;10&quot;&gt;&lt;/line&gt;              
+&lt;/svg&gt;</code></pre>
+            <p class="fragment fade-down">Drar en linje från x1,y1 till x2,y2</p>
+            <pre class="fragment fade-down"><code class="language-svg">&lt;svg&gt;
+  &lt;line x1=&quot;10&quot; y1=&quot;10&quot; x2=&quot;50&quot; y2=&quot;10&quot; 
+    stroke=&quot;black&quot; 
+    stroke-width=&quot;5&quot;&gt;&lt;/line&gt;            
+&lt;/svg&gt;</code></pre>
+            <p class="fragment fade-down">Vi kan också definera vilken färg och hur bred strecket ska vara</p>
+          </section>
+          <section>
+            <p>Andra former</p>
+            <ul>
+              <li><em>ellipse</em> - Du bestämmer radie både på x och y</li>
+              <li><em>polyline</em> - en rad ihopkopplade raka linjer</li>
+              <li><em>polygon</em> - en stängd form med flera hörn</li>
+              <li><em>path</em> - fri form, används mycket av t.ex. illustrator på komplicerade former</li>
+            </ul>
+          </section>
+          <section>
+            <img src="http://svgpocketguide.com/book/images/curvecubic.png">
+            <p>För kurvor definierar vi flera olika punkter</p>
+            <pre><code class="language-svg">&lt;svg&gt;
+    &lt;path fill=&quot;none&quot; d=&quot;M10,55 C15,5 100,5 100,55&quot; /&gt;
+&lt;/svg&gt;</code></pre>
+          </section>
+          <section>
+            <p><strong>SVG Filters</strong></p>
+            <p><a href="https://testdrive-archive.azurewebsites.net/graphics/hands-on-css3/hands-on_svg-filter-effects.htm">SVG Filter Playground</a></p>
+          </section>
+          <section>
+            <img src="https://i.imgur.com/rdBntgh.png" alt="Can I Use statistics on   SVG filters.">
+          </section>
+          <section>
+            <p>Optimera dina SVG</p>
+            <p><a href="https://jakearchibald.github.io/svgomg/">SVGOMG</a></p>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+            Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

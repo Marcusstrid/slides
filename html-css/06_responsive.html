@@ -1,0 +1,304 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Responsive Web Design">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Responsive Web Design</title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      background: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <section>
+          <h1><strong>Responsive Web Design</strong></h1>
+        </section>
+        <section>
+          <p>Myntat av <em>Ethan marcotte</em></p>
+          <a href="https://alistapart.com/article/responsive-web-design">https://alistapart.com/article/responsive-web-design</a>
+        </section>
+        <section>
+          <a href="http://www.liquidapsive.com/">http://www.liquidapsive.com/</a>
+        </section>
+       <section>
+          <h1>Web Design Strategies</h1>
+        </section>
+        <section>
+          <h3><em>Graceful Degradation</em></h3>
+          <blockquote>
+            Graceful degradation focuses on building the website for the most advanced/capable browsers. 
+          </blockquote>
+          <blockquote>
+            Under this paradigm, older browsers are expected to have a poor, but passable experience.
+          </blockquote>
+        </section>
+        <section>
+            <h3>Graceful Degradation</h3>
+            <p>Praktiskt exempel</p>
+            <pre><code class="language-css">
+.box-with-opacity{
+  opacity: 0.5;
+}</code></pre>
+        </section>
+        <section>
+            <h3><em>Graceful Degradation</em></h3>
+            <p class="fragment fade-down">just fan.</p>
+            <pre class="fragment fade-down"><code class="language-css">
+.box-with-opacity{
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+}</code></pre>
+        </section>
+        <section>
+          <h3><em>Progressive Enhancement</em></h3>
+          <blockquote>
+            Progressive enhancement focuses on the content. 
+          </blockquote>
+          <blockquote>
+            The goal of Web design is not merely to dazzle, but to deliver information to the widest audience possible.
+          </blockquote>
+        </section>
+        <section>
+          <blockquote>universal access to a website’s content irrespective of a person’s physical abilities or technological capabilities.</blockquote>
+        </section>
+        <section>
+        <p class="fragment fade-down"><span class="fragment highlight-red">Broad version:</span> start with a baseline of functionality, enhance upwards based on capabilities.</p>
+        <p class="fragment fade-down"><span class="fragment highlight-red">Narrow version:</span> start with HTML, then add CSS, then add JavaScript.</p>
+        </section>
+        <section>
+        <pre><code class="language-css">.box-with-opacity{
+    background: rgb(0,0,0);
+    background: rgba(0,0,0, 0.5);
+}</code></pre>
+        <p>Browsers som stödjer alpha-kanal får det, de andra får nöja sig utan alpha-kanal</p>
+        </section>
+        <section>
+          <a href="http://dowebsitesneedtobeexperiencedexactlythesameineverybrowser.com/">
+          <h4>dowebsitesneedtobeexperienced
+        exactlythesame
+        ineverybrowser.com</h4>
+          </a>
+        </section>
+        <section>
+          <ul>
+          <li class="fragment fade-in">Ska vi anpassa för alla tänkbara besökare eller enbart vår målgrupp?</li>
+          <li class="fragment fade-in">Måste vi anpassa oss till exakt alla enheter som finns? Är det OK att sidan ser annorlunda ut på vissa enheter och browsers?</li>
+          <li class="fragment fade-in">Måste vi verkligen ha fallbacks eller fixes för webbläsare som 1% av befolkningen använder?</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Läs mer:</h3>
+          <a href="http://alistapart.com/article/understandingprogressiveenhancement"><h3 class="black-background">A List Apart: Understanding Progressive Enhancement<h3></a>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Media Queries</em></h1>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/TMb73JM.png">
+        </section>
+        <section>
+          <p>Med media queries så bestämmer vi vid vilka <strong>brytpunkter</strong> vår sida ska ändra sig</p>
+          <pre><code class="language-css">@media (min-width: 361px) {
+  .aside {
+    float: right;
+  }
+}</code></pre>
+          <p class="fragment fade-down"><code>@media</code> tar ett eller fleravillkor, oftast <code><strong>max-width</strong></code> eller <strong><code>min-width</code></strong></p>
+        </section>
+        <section>
+          <p>Ska vi ändra vår layout när vi går uppåt? <code>min-width</code></p>
+          <p>Ska vi ändra vår layout när vi går nedåt? <code>max-width</code></p>
+          <p class="fragment fade-down">Mobile first vs. Desktop first</p>
+        </section>
+        <section>
+          <pre><code class="language-css">@media (min-width: 361px) {
+  .aside {
+    float: right;
+  }
+}</code></pre>
+        <pre><code class="language-css">@media (max-width: 360px) {
+  .aside {
+    float: none;
+  }
+}</code></pre>
+        </section>
+        <section>
+          <pre><code class="language-css">@media (min-width: 361px) and (max-width: 560px) {
+  .aside {
+    background-color: red;
+  }
+}</code></pre>
+        <p class="fragment fade-down">Vi kan också definiera inom ett visst spann med <code><em>and</em></code></p>
+        <pre><code class="language-css">@media (min-width: 30em) and (orientation: landscape) {  }</code></pre>
+        </section>
+        <section>
+          <p>Media types</p>
+          <ul>
+            <li><em>screen</em> - alla skärmar (nästan allt)</li>
+            <li><em>print</em> - när vi skriver ut sidan</li>
+            <pre><code class="language-css">@media print { ... }
+</code></pre>
+            <p class="fragment fade-down">Triggas bara när vi trycker på Skriv ut.</p>
+          </ul>
+        </section>
+        <section>
+          <pre><code>@media (min-height: 680px), screen and (orientation: portrait) { ... }</code></pre>
+          <p>Kommaseparerade listor, ungefär som att vi väljer flera selektorer</p>
+        </section>
+        <section>
+          <pre><code class="language-css">@media (min-width: 30em) { 
+  .header {
+    width: 100%;
+  }
+  .aside {
+    flex: 1;
+  }
+  .main {
+    flex: 2;
+  }
+}</code></pre>
+        <p>Vi kan definiera hur mycket css som helst</p>
+        </section>
+        <section>
+          <p>Bra översikt på vilka mönster som finns</p>
+          <p><a href="http://bradfrost.github.io/this-is-responsive/patterns.html">http://bradfrost.github.io/this-is-responsive/patterns.html</a></p>
+        </section>
+        <section>
+          <p>Vilka brytpunkter ska vi ha?</p>
+          <p class="fragment fade-down"><em>Svar: de brytpunkter som vårt innehåll kräver</em></p>
+          <p class="fragment fade-down">iPhone eller 1080p kan vara en bra utgångspunkt, men vi måste kolla att vårt innehåll fungerar.</p>
+          <p class="fragment fade-down"><em>Content first</em></p>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/v5P2Dij.png">
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><strong>Fallbacks</strong></h1>
+        </section>
+        <section>
+          <p>Vi kan skriva egenskaper som kan användas av äldre browsers</p>
+          <pre><code class="language-css">.child {
+  width: 48%;
+  width: calc(50% - 2rem);
+  background-color: lightpink;
+  background: linear-gradient(red, green);
+}</code></pre>
+        <p class="fragment fade-down">För supergamla browsers som inte kan hantera <code><em>calc</em></code> används den första bredden.</p>
+        <p class="fragment fade-down">Stödjs inte <em>gradients</em> så används bara bakgrundfärgen</p>
+        </section>
+        <section>  
+          <p>Feature Queries</p>
+          <pre><code class="language-css">@supports(display: flex){
+  .main {
+    display: flex;
+    justify-content: center;
+  }
+}</code></pre>    
+        </section>
+        <section>
+          <p>Vi kan kolla specifika egenskaper</p>
+          <pre><code class="language-css">@supports (box-shadow: 0 0 0 3px rgba( 180, 222, 250, .75 )) {
+  input[type=text]:focus {
+    outline: none;
+    border-color: #2186CA;
+    box-shadow: 0 0 0 3px rgba( 180, 222, 250, .75 );
+  }
+}</code></pre>
+        <p class="fragment fade-down">Använder en snyggare fokusering på inputfält om det går.</p>
+        <a class="reference" href="https://www.filamentgroup.com/lab/a11y-links.html">https://www.filamentgroup.com/lab/a11y-links.html</a>
+        </section>
+        <section>
+          <p>css-en innanför<code>@supports</code> används bara om webbläsaren upptäcker att det stödjs</p>
+          <p class="fragment fade-down">Alternativt så stödjs inte <code>@supports</code> av webbläsaren så då används det inte ändå</p>
+          <p class="fragment fade-down">Det betyder att vi skapar CSS från start som riktar sig mot äldre browsers -> <em>progressive enhancement</em></p>
+        </section>
+        <section>
+          <p>Testa</p>
+          <p>Emulera i Internet Explorer 11</p>
+          <p>Skaffa en Virtual Box: <a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/"></a>modern.ie</p>
+          <p><a href="http://browsershots.org/">Browsershots</a></p>
+          <p><a href="https://www.browserling.com/">Browserling</a></p>
+          <p><a href="https://www.browserstack.com/">Browserstack</a></p>
+        </section>
+        <section>
+          <p>Men alla skumma prefixes?</p>
+          <pre><code class="language-css">.page-wrap {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+}</code></pre>
+        <p><a href="http://shouldiprefix.com/">http://shouldiprefix.com/</a></p>
+        <p><a href="https://autoprefixer.github.io/">https://autoprefixer.github.io/</a></p>
+        </section>
+        <section>
+          <p>Prefixes säger:</p>
+          <blockquote>Ja, vi kommer troligtvis fixa det här, men vi är inte säkra, vi har heller inget ansvar om det fungerar dåligt. Men här är iaf en typ fungerande lösning: <code><em>-webkit-</em></code></blockquote>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+            Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

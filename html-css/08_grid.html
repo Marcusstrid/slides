@@ -1,0 +1,225 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="CSS Grid">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> CSS Grid </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      background: none; box-shadow: none;"
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section>
+          <h1><strong>CSS Grid</strong></h1>
+        </section>
+        <section data-background="#f2e8d6">
+          <img style="box-shadow: none; background: none;" src="https://i.imgur.com/IXya5TJ.png">
+        </section>
+        <section data-background-image="https://i.imgur.com/1J7XDr0.png">
+          <h3 class="fragment fade-down"><em><code style="text-transform: lowercase;">display: grid;</code></em></h3>
+        </section>
+        <section>
+          <h4><a href="https://gridbyexample.com/">https://gridbyexample.com/</a></h4>
+          <h4><a href="http://learncssgrid.com/">http://learncssgrid.com/</a></h4>
+        </section>
+        <section>
+          <blockquote>Flexbox är endimensionellt, grid är tvådimensionellt: flex har en column eller en row och skapar endast nya rader när det inte finns plats. I grid så är antalet rader och kolumner redan fördefinierat.</blockquote>
+        </section>
+        <section>
+          <pre><code class="language-css">.parent {
+  display: grid;
+  grid-gap: 1rem;
+}</code></pre>
+        <p>Som <code><em>display: flex;</em></code> men här kan vi även sätta gutters med <code><strong>grid-gap</strong></code></p>
+        </section>
+        <section>
+          <p>Skapar två kolumner som är 200px breda</p>
+          <pre><code class="language-css">grid-template-columns: 200px 200px</code></pre>
+          <p>Skapar två rader som är 200px höga</p>
+          <pre><code class="language-css">grid-template-rows: 200px 200px;</code></pre>
+        </section>
+        <section>
+          <p>Föräldern bestämmer storlek och flöde</p>
+          <pre><code class="language-css">.parent{
+  display: grid;
+  /* 2 columns a 200px */
+  grid-template-columns: 200px 200px;
+  /* 2 rows a 200px */
+  grid-template-rows: 200px 200px;
+  /* 1 rem gap between each element */
+  grid-gap: 1rem;
+}
+.child {
+  background-color: #2d2d2d;
+  border-radius: 5px;
+}</code></pre>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/vuyVEZV.png">
+        </section>
+        <section>
+          <p>Pixelvärden är dock inte så snyggt</p>
+          <p class="fragment fade-down"><strong>fr</strong> - fraction</p>
+          <pre class="fragment fade-down"><code class="language-css">grid-template-columns: 1fr 2fr;</code></pre>
+          <p class="fragment fade-down">Tänk <code><em>flex: 1;</em></code></p>
+        </section>
+        <section>
+          <p>Vi kan låta vissa element ta upp mer plats</p>
+          <pre><code class="language-css">.parent{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr;
+  grid-gap: 1rem;
+}</code></pre>
+        </section>
+        <section>
+          <p>Om vi ska ha många kolumner</p>
+          <pre><code class="language-css">.parent{
+  display: grid;
+  /* 12 columns with equal width */
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 2fr 1fr;
+  grid-gap: 1rem;
+}</code></pre>
+        <p class="fragment fade-down"><code>repeat(hur många gånger, vilken storlek)</code></p>
+        </section>
+        <section>
+          <p>Gutters bestämmer</p>
+          <img src="https://i.imgur.com/UB0L0Jk.png">
+        </section>
+        <section>
+          <p>Vi kan positionera items utifrån dessa gutters</p>
+          <pre><code class="language-css">.parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+/* First child should span all columns */
+.child:nth-child(1) {
+  grid-columns: 1 / 4;
+}</code></pre>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/zl4eECG.png">
+        </section>
+        <section>
+          <pre><code class="language-css">.parent{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.child:nth-child(1){
+  /* span both rows and columns */ 
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}</code></pre>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/FoCo8rm.png">
+        </section>
+        <section>
+          <p>När vi inte vet antalet rows and columns</p>
+          <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+}</code></pre>
+          <a class="reference" href="https://rachelandrew.co.uk/archives/2016/04/12/flexible-sized-grids-with-auto-fill-and-minmax/">https://rachelandrew.co.uk/archives/2016/04/12/flexible-sized-grids-with-auto-fill-and-minmax/</a>
+        </section>
+        <section>
+          <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-auto-rows: 100px;
+}</code></pre>
+        <p>Flexliknande beteende, fyll på så många 100px boxar som får plats. Minst 100px höjd</p>
+        </section>
+        <section>
+          <p><code><em>minmax()</em></code></p>
+          <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, auto));
+  grid-auto-rows: minmax(100px, auto);
+}</code></pre>
+        </section>
+        <section>
+          <p>Det sjukaste</p>
+          <pre><code class="language-css">.container {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 3fr;   
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas:  "header header"
+                          "aside main"
+                          "footer footer";
+}
+.header {
+  grid-area: header;
+}
+</code></pre>
+        <a class="reference" href="https://codepen.io/jesperorb/pen/bapgGx?editors=1100">https://codepen.io/jesperorb/pen/bapgGx?editors=1100</a>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/3APxv3Q.png">
+        </section>
+        <section>
+          <a href="HTTP://LEARNCSSGRID.COM/">http://learncssgrid.com</a>
+          <a href="HTTPS://GRIDBYEXAMPLE.COM/">https://gridbyexample.com</a>
+          <a href="https://github.com/fend17/html-css/blob/master/exercises/11_recreate_layouts_grid.md">Övningar: Återskapa Layout</a>
+        </section>
+      </section>
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+    const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+    for(const editableElement of editableCodeBoxes){
+      editableElement.addEventListener('blur', function(){
+        Prism.highlightAll();
+      })
+    }
+  </script>
+</body>
+</html>

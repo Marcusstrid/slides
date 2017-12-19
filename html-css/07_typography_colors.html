@@ -1,0 +1,499 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Typography & Colors">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Typography & Colors </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      background: none;
+      box-shadow: none;
+    }
+    .hsla, .rgba {
+      display: flex;
+      flex-direction: column;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      margin: 4.15px 0;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 7.7px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+      background: #d7dcdf;
+      border-radius: 1.3px;
+      border: 1px solid rgba(0, 1, 1, 0);
+    }
+    input[type=range]::-webkit-slider-thumb {
+      box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+      border: 0px solid rgba(0, 0, 0, 0);
+      height: 16px;
+      width: 16px;
+      border-radius: 50px;
+      background: #001b31;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -5.15px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #e5e8ea;
+    }
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 7.7px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+      background: #d7dcdf;
+      border-radius: 1.3px;
+      border: 1px solid rgba(0, 1, 1, 0);
+    }
+    input[type=range]::-moz-range-thumb {
+      box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+      border: 0px solid rgba(0, 0, 0, 0);
+      height: 16px;
+      width: 16px;
+      border-radius: 50px;
+      background: #001b31;
+      cursor: pointer;
+    }
+    input[type=range]::-ms-track {
+      width: 100%;
+      height: 7.7px;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+      background: #c9d0d4;
+      border: 1px solid rgba(0, 1, 1, 0);
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    }
+    input[type=range]::-ms-fill-upper {
+      background: #d7dcdf;
+      border: 1px solid rgba(0, 1, 1, 0);
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    }
+    input[type=range]::-ms-thumb {
+      box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+      border: 0px solid rgba(0, 0, 0, 0);
+      height: 16px;
+      width: 16px;
+      border-radius: 50px;
+      background: #001b31;
+      cursor: pointer;
+      height: 7.7px;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+      background: #d7dcdf;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: #e5e8ea;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <section>
+          <h1><strong> Typografi </strong></h1>
+        </section>
+        <section>
+          <h2><em>Font Properties</em></h2>
+        </section>
+        <section>
+          <ul>
+            <li class='fragment fade-in'><code>font-size:<b> px/em/%/small;</b></code></li>
+            <li class='fragment fade-in'><code>font-family:<b> Arial;</b></code></li>
+            <li class='fragment fade-in'><code>font-color: <b style="color: slategray;">slategray;</b></code></li>
+            <li class='fragment fade-in'><code style="font-weight: 100;">font-weight: 100;</code></li>
+            <li class='fragment fade-in'><code style="font-style: italic">font-style: italic;</code></li>
+            <li class='fragment fade-in'><code style="font-variant: small-caps;">font-variant: small-caps;</code></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Font Shorthand</h3>
+          <pre class="fragment fade-in"><code class="language-css">font: 100% "Arial";</code></pre>
+          <pre class="fragment fade-in"><code class="language-css">font: 100%/1.5 "Arial";</code></pre>
+          <pre class="fragment fade-in"><code class="language-css">font: 100%/1.5 "Arial", sans-serif;</code></pre>
+          <pre class="fragment fade-in"><code class="language-css">font: 100%/1.5 "Helvetica Neue", Arial, sans-serif</code></pre>
+        </section>
+        <section>
+          <pre><code class="language-js">font: 100%/1.5 Arial;</code></pre> 
+          <pre><code class="language-js">font: 100%/1.5 "Arial";</code></pre>
+          <p>Tillhör fonten en <strong>generic font family</strong> behöver den inte ha quotes</p>
+          <a class="reference" href="https://www.w3.org/TR/css-fonts-3/#generic-font-families">https://www.w3.org/TR/css-fonts-3/#generic-font-families</a>
+        </section>
+        <section>
+          <ul>
+            <li class="fragment fade-in">100%  ===  16px</li>
+            <li class="fragment fade-in">1em  ===  16px</li>
+            <li class="fragment fade-in">1rem  ===  16px</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Mer whitespace!</h3>
+          <ul>
+            <li class="fragment fade-in"><em><code>letter-spacing: .5em;</em></code></li>
+            <li class="fragment fade-in"><em><code>word-spacing: .5em;</em></code></li>
+          </ul>
+        </section>
+          <section data-background="images/google-fonts.png"></section>
+          <section>
+            <pre><code class="language-html">&lt;link 
+  href=&quot;https://fonts.googleapis.com/css?family=Bungee&quot;
+  rel=&quot;stylesheet&quot;&gt;</code></pre>
+            <pre><code class="language-css">font-family: 'Bungee', sans-serif;</code></pre>
+            <pre><code class="language-html">&lt;link
+  href=&quot;https://fonts.googleapis.com/css?family=Bungee|Lato|Open+Sans&quot;
+  rel=&quot;stylesheet&quot;&gt;</code></pre>
+          </section>
+          <section>
+            <p><code><em>@font-face</em></code></p>
+            <p>Används av Google fonts</p>
+            <p>Vi kan även skapa egna <code><em>@font-face</em></code></p>
+            <pre><code class="language-css">@font-face {
+  font-family: 'Bungee';
+  font-style: normal;
+  font-weight: 400;
+  /* If installed, used installed, else load from server */
+  src: local('Bungee'), local('Bungee-regular'), url(Bungee.woff2) format('woff2');
+}</code></pre>
+          </section>
+          <section>
+            <ul>
+              <li><code><em>.woff</em></code></li>
+              <li><code><em>.woff2</em></code></li>
+              <li><code><em>.eot</em></code></li>
+              <li><code><em>.ttf</em></code></li>
+            </ul>
+            <p><em>Det räcker oftast med woff/woff2</em></p>
+            <a class="reference" href="https://css-tricks.com/snippets/css/using-font-face/">https://css-tricks.com/snippets/css/using-font-face/</a>
+          </section>
+          <section>
+            <p>Använd local först för att kolla om det finns lokal installation</p>
+            <pre><code class="language-css">@font-face {
+  font-family: 'Bungee';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bungee'), url(Bungee.woff2) format('woff2');
+}</code></pre>
+          </section>
+          <section>
+            <a href="https://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel Generator</a>
+            <p>Skapar automatiskt ett <code><em>@font-face</em></code> åt en, färdig css och fonter i rätt format.</p>
+          </section>
+          <section>
+            <p>Problem med webfonts</p>
+              <p><em>FOUT</em></p>
+              <blockquote>Flash of Invisible Text: Default browser behavior to render text invisible while the web font is loading. In modern browsers, FOIT lasts a maximum of three seconds</blockquote>
+          </section>
+          <section>
+            <p><em>FOIT</em> - Flash of invisible Text</p>
+              <blockquote>
+Flash of Unstyled Text: Default behavior to render text with the fallback system font while the web font has loaded</blockquote>
+          </section>
+          <section>
+            <p><a href="https://www.zachleat.com/foitfout/">Zach Leatherman - FOIT vs. FOUT Demo</a></p>
+            <p><a href="https://www.zachleat.com/web/comprehensive-webfonts/#fout-class">A Comprehensive Guide To Font Loading Strategies</a></p>
+          </section>
+          <section>
+            <p>Bra lösningar med sämre stöd</p>
+            <pre><code class="language-css">font-display: swap;</code></pre>
+            <p>Sätt i @font-face för att automatisk byta till din häftiga webfont när den är tillgänglig</p>
+          </section>
+          <section>
+          <pre><code class="language-html">&lt;link 
+  href=&quot;bungee.woff2&quot; 
+  rel=&quot;preload&quot;
+  as=&quot;font&quot;
+  type=&quot;font/woff2&quot;&gt;</code></pre>
+          <p>Säger åt browsern att hämta fonten tidigare, få företräde i vattenfallet. Fungerar inte med google fonts.</p>
+          </section>
+          <section>
+            <p><em>Alternativt: använd system fonts / websafe fonts</em></p>
+            <pre><code class="language-css">/* System Fonts as used by GitHub */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", 
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}</code></pre>
+            <a class="reference" href="https://css-tricks.com/snippets/css/system-font-stack/">https://css-tricks.com/snippets/css/system-font-stack/</a>
+          </section>
+          <section>
+            <table style="font-size: 1.5rem">
+<thead>
+<tr>
+<th>OS</th>
+<th>Version</th>
+<th>System Font</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mac OS X</td>
+<td>El Capitan</td>
+<td><a href="https://github.com/supermarin/YosemiteSanFranciscoFont">San Francisco</a></td>
+</tr>
+<tr>
+<td>Mac OS X</td>
+<td>Yosemite</td>
+<td><a href="https://www.myfonts.com/fonts/linotype/neue-helvetica/">Helvetica Neue</a></td>
+</tr>
+<tr>
+<td>Mac OS X</td>
+<td>Mavericks</td>
+<td><a href="https://en.wikipedia.org/wiki/Lucida_Grande">Lucida Grande</a></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>Vista</td>
+<td><a href="http://www.microsoft.com/typography/Fonts/family.aspx?FID=331">Segoe UI</a></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>XP</td>
+<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=19">Tahoma</a></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>3.1 to ME</td>
+<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=244">Microsoft Sans Serif</a></td>
+</tr>
+<tr>
+<td>Android</td>
+<td>Ice Cream Sandwich (4.0)+</td>
+<td><a href="https://fonts.google.com/specimen/Roboto">Roboto</a></td>
+</tr>
+<tr>
+<td>Android</td>
+<td>Cupcake (1.5) to Honeycomb (3.2.6)</td>
+<td><a href="https://fonts.google.com/specimen/Droid+Sans">Droid Sans</a></td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td>All versions</td>
+<td><a href="http://font.ubuntu.com/">Ubuntu</a></td>
+</tr>
+</tbody>
+</table>
+          </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Färg</em></h1>
+        </section>
+        <section>
+          <h3>hsl(a)</h3>
+          <span class="fragment" data-autoslide="500">hue,</span>
+          <span class="fragment" data-autoslide="500">saturation,</span>
+          <span class="fragment" data-autoslide="500">lightness,</span>
+          <span class="fragment" data-autoslide="500">opacity</span>
+        </p>
+        <div class="hsla">
+          <label for="hue">Hue</label>
+          <input type="range" min="0" max="360" id="hue">
+          <label for="sat">Saturation</label>
+          <input type="range" id="sat">
+          <label for="light">Lightness</label>
+          <input type="range" id="light">
+          <label for="opacity">Opacity</label>
+          <input type="range" id="opacity2" min="0" max="1" step="0.01">
+        </div>
+        <script>
+          let hslInputs = document.querySelectorAll('.hsla input');
+          for (let i = 0; i < hslInputs.length; i++){
+            hslInputs[i].addEventListener("change", function(){
+              let hue = document.getElementById("hue");
+              let sat = document.getElementById("sat");
+              let light = document.getElementById("light");
+              let opacity2 = document.getElementById("opacity2");
+
+              document.getElementsByClassName("reveal")[0]
+              .style.background = `hsla(${hue.value},${sat.value}%,${light.value}%, ${opacity2.value})`;
+            })};
+          </script>
+        </section>
+        <section>
+          <h3><code style="text-transform: lowercase;">rgb(a);</code></h3>
+          <p>
+            <span class="fragment" data-autoslide="500" style="color: darkred">red,</span>
+            <span class="fragment" data-autoslide="500" style="color: forestgreen">green,</span>
+            <span class="fragment" data-autoslide="500" style="color: darkblue">blue,</span>
+            <span class="fragment" data-autoslide="500" style="color: gray">alpha</span>
+          </p>
+          <div class="rgba">
+            <label for="red">red</label>
+            <input type="range" max="255" id="red">
+            <label for="green">green</label>
+            <input type="range" max="255" id="green">
+            <label for="blue">blue</label>
+            <input type="range" max="255" id="blue">
+            <label for="opacity">Opacity</label>
+            <input type="range" id="opacity" min="0" max="1" step="0.01">
+          </div>
+          <script>
+            let inputs = document.querySelectorAll('.rgba input')
+            for (let i = 0; i < inputs.length; i++){
+              inputs[i].addEventListener("change", function(){
+                let redValue = document.getElementById("red");
+                let greenValue = document.getElementById("green");
+                let blueValue = document.getElementById("blue");
+                let opacity = document.getElementById("opacity");
+
+                document.getElementsByClassName("reveal")[0]
+                .style.background = `rgba(${redValue.value},${greenValue.value},${blueValue.value}, ${opacity.value})`;
+              })};
+            </script>
+          </section>
+          <section>
+            <h3><em>Gradients</em></h3>
+          </section>
+          <section data-background="linear-gradient(lightsalmon, teal)">
+            <p>Linear gradient</p>
+            <p>Kräver minst två <em style="background-color: black;">color stops</em></p>
+            <pre><code class="language-css">background: linear-gradient(lightsalmon, teal);</code></pre>
+            <p class="fragment fade-down">Default är <strong style="background-color: black;">top -> bottom</strong></p>
+          </section>
+          <section data-background="linear-gradient(to right, lightsalmon, teal)">
+            <p>Kan också specificera riktning</p>
+            <pre><code class="language-css">background: linear-gradient(to right, lightsalmon, teal);</code></pre>
+          </section>
+          <section data-background="linear-gradient(to left, lightsalmon, teal)">
+            <p>Kan också specificera riktning</p>
+            <pre><code class="language-css">background: linear-gradient(to left, lightsalmon, teal);</code></pre>
+          </section>
+          <section data-background="linear-gradient(45deg, lightsalmon, teal)">
+            <p>Riktning med grader ger mer möjligheter</p>
+            <pre><code class="language-css">background: linear-gradient(45deg, lightsalmon, teal);</code></pre>
+          </section>
+           <section data-background="linear-gradient(lightsalmon 30%, teal 30%, teal 60%, lightpink 60%)">
+            <p>Sharp color stops</p>
+            <pre><code class="language-css">background: 
+linear-gradient(lightsalmon 40%, teal 40%, teal 60%, lightsalmon);</code></pre>
+          </section>
+          <section data-background="radial-gradient(circle at center, lightsalmon, teal)">
+            <p>Radial gradient</p>
+            <pre><code class="language-css">background:
+  radial-gradient(circle at center, lightsalmon, teal);</code></pre>
+          </section>
+           <section data-background="radial-gradient(ellipse at center, lightsalmon, teal)">
+            <p>Ellipse</p>
+            <pre><code class="language-css">background:
+  radial-gradient(ellipse at center, lightsalmon, teal);</code></pre>
+          </section>
+          <section data-background="radial-gradient(circle at 10%, lightsalmon, teal)">
+            <p>Position</p>
+            <pre><code class="language-css">background:
+  radial-gradient(circle at 10%, lightsalmon, teal);</code></pre>
+          </section>
+          <section>
+            <style type="text/css">
+              .button{
+  font-family: "Helvetica", sans-serif;
+  color: #f5f5f5;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px hsla(152, 20%, 20%,0.2);
+  background: linear-gradient(hsl(152, 54%, 63%), hsl(170, 54%, 63%));
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); 
+  transition: all 300ms;
+  padding: 24px 32px;
+  border-radius: 8px;
+  font-size: 100%;
+  max-width: 30rem;
+  margin: 0 auto; 
+  cursor: pointer;
+}
+
+.button:hover{
+  transform: translate(0px, -2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.button:active{
+  transform: translate(0px, 2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); 
+}
+            </style>
+            <button class="button"> Read More </button>
+            <pre><code class="language-css">background: 
+  linear-gradient(hsl(152, 54%, 63%), hsl(170, 54%, 63%));</code></pre>
+          <p class="fragment fade-down">Små övergångar kan ge vissa element mer liv</p>
+          </section>
+          <section>
+            <p>Återuppfinn inte hjulet</p>
+            <ul>
+              <li><a href="https://webkul.github.io/coolhue/">https://webkul.github.io/coolhue/</a></li>
+              <li><a href="https://uigradients.com/#Twitch">https://uigradients.com/</a></li>
+            </ul>
+          </section>
+          <section>
+            <p>👀 : <a href="https://twitter.com/i/moments/880688233641848832?lang=en">Little UI Details</a></p>
+            <p>👀 : <a href="https://www.typewolf.com/">https://www.typewolf.com/</a></p>
+            <p>📖 : <a href="http://prowebtype.com/">http://prowebtype.com/</a></p>
+          </section>
+        </section>
+
+      </div>
+    </div>
+    <!-- reveal.js scripts -->
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        transition: 'zoom',
+        height: '90%',
+        width: '70%',
+        controls: true,
+        progress: true,
+        history: true,
+        keyboard: true,
+        overview: true,
+        center: true,
+        dependencies: [
+        { src: 'lib/js/classList.js',condition: function (){
+          return !document.body.classList;}},
+          { src: 'plugin/notes/notes.js', async: true },
+          {src : 'lib/prismjs/prism.js'},
+          {src : 'js/print.js'},
+          { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+          ]
+        });
+
+      const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+      for(const editableElement of editableCodeBoxes){
+        editableElement.addEventListener('blur', function(){
+          Prism.highlightAll();
+        })
+      }
+    </script>
+  </body>
+  </html>

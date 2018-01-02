@@ -1,0 +1,474 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Animation & Transition">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Animation &amp; Transition </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      background: none; box-shadow: none;"
+    }
+    .translate, .skew, .scale, .rotatey, .rotatex {
+      transition: transform 200ms;
+    }
+    .example{
+      height: 100px; 
+      width: 100px; 
+      background: #ed4a66;
+      border-radius: 5px;
+      box-shadow: 0 0 12px rgba(0,0,0,.1);
+      margin: 0 auto 10rem auto !important;
+    }
+    .reveal .two-columns{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .reveal .two-columns > pre {
+      flex: 2;
+    }
+    .reveal .two-columns > div {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section>
+          <h2><strong><code>transition:</code></strong></h2>
+          <h2><strong><code>animation:</code></strong></h2>
+          <h2><strong><code>transform:</code></strong></h2>
+        </section>
+        <section>
+          <div id="animate"></div>
+          <style>
+            #animate{
+              margin: 0 auto;
+              width: 300px;
+              height: 300px;
+              background: teal;
+              box-shadow: 10px 10px 0px salmon,
+                          20px 20px 0px gray;
+              transition: all 500ms ease;
+            }
+            #animate:hover{
+               box-shadow: -10px 10px 0px salmon,
+                 -20px 20px 0px gray;
+          
+            }
+          </style>
+        </section>
+        <section>
+            <div id="perspective-1"></div>
+            <div id="perspective-2"></div>
+            <a class="reference">Inspektera källkoden: <code><em>transform-style: preserve-3d</em></code></a>
+          <style>
+            #perspective-1{
+              display: inline-block;
+              transition: all 500ms ease-in-out;
+              width: 300px;
+              height: 300px;
+              background: teal;
+              transform: rotateY(30deg);
+              -webkit-transform-style: preserve-3d;
+              -webkit-backface-visibility: hidden;
+            }
+            #perspective-1:after{
+              content: url(https://i.imgur.com/3LzcGAt.gif);
+              right: 0px;
+              bottom: 0px;
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              background: lightsalmon;
+              -webkit-transform: rotateY( 180deg );
+              -webkit-transform-style: preserve-3d;
+              -webkit-backface-visibility: hidden;
+            }
+            #perspective-2{
+              display: inline-block;  
+              width: 300px;
+              height: 300px;
+              background: teal;
+              transform: rotateY(-30deg);
+              transition: all 500ms ease-in-out;
+            }
+            #perspective-2:hover{
+              transform: rotateY(-210deg);
+            }
+            #perspective-1:hover{
+              transform: rotateY(210deg);
+            }
+          </style>
+        </section>    
+      </section>
+      <section>
+        <section>
+          <h1><em>Transition</em></h1>
+        </section>
+      <section>
+        <h3><code>transition:</code></h3>
+        <blockquote>        
+          the process or a period of changing from one state or condition to another.
+        </blockquote>
+      </section>
+    <section>
+      <h4>Syntax</h4>
+    <pre class="fragment fade-in"><code class="language-css">.box{
+  transition: all 1s ease;
+}</code></pre>
+    </section>
+    <section>
+      <h3>Properties</h3>
+      <p><code>transition-property</code></p>
+      <p><code>transition-duration</code></p>
+      <p><code>transition-timing-function</code></p>
+      <p><code>transition-delay</code></p>
+    </section>
+    <section>
+    <h3>Shorthand</h3>
+<pre class="fragment fade-in "><code class="language-css">.box{
+  transition: all 1s ease 1s;
+}</code></pre>   
+    </section>
+    <section>
+      <h3>Flera transitions</h3>
+          <pre class="fragment fade-in "><code class="language-css">.box{
+  transition: color 1s ease,
+              background 0.5s ease-in-out;
+}</code></pre>
+    </section>
+    <section>
+      <h3>transition-duration</h3>
+<pre class="fragment fade-in "><code class="language-css">.box{
+  transition: all 0.4s ease;
+}
+.box{
+  transition: all 400ms ease;
+}</code></pre> 
+    </section>
+    <section  style="font-size: 1.3rem;">
+      <h3><strong>transition-timing-function</strong></h3>
+      <p><code><em>linear</em></code></p>
+      <p><code><em>ease</em></code></p>
+      <p><code><em>ease-in</em></code></p>
+      <p><code><em>ease-out</em></code></p>
+      <p><code><em>ease-in-out</em></code></p>
+      <p><code><em>step-start</em></code></p>
+      <p><code><em>step-end</em></code></p>
+    </section>
+        <section>
+          <a href="http://css3.bradshawenterprises.com/">
+            <h2>css3.bradshawenterprises.com</h2>
+          </a>
+        </section>
+      </section>
+      <section>
+        <section><h1><code><em>transform</em></code></h1></section>
+        <section>
+          <h3><code>transform properties</code></h2>
+        </section>
+        <section>
+          <pre class="fragment fade-in"><code class="language-css">.box{
+  transform: transform-value;
+}</code></pre>
+          <pre class="fragment fade-in "><code class="language-css">.box{
+  transform: translate(30px, 30px);
+}</code></pre>
+        </section>
+        <section>
+          <h3>translate()</h3>
+<pre class="translate"><code class="language-css">
+transform: translate(x,y);
+
+transform: translateX(30px);
+transform: translateY(30px);
+</code></pre>
+  <style>
+    .translate:hover{
+      transform: translate(30px, 30px);
+    }
+  </style>
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="scale" contenteditable>.scale:hover{
+  transition: transform 200ms;
+  transform: scale(2);
+}</code></pre>
+            <div id="scale">
+              <div class="example scale">
+                
+              </div>
+            </div>
+          </div>
+          <p class="reference">Exemplet är interaktivt, det går att ändra koden</p>
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="skew" contenteditable>.skew:hover {
+  transform: skew(10deg, 20deg);
+}</code></pre>
+            <div id="skew">
+              <div class="example skew">
+                
+              </div>
+            </div>
+          </div>
+          <p class="reference">Exemplet är interaktivt, det går att ändra koden</p>
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="rotateX" contenteditable>.rotateX:hover{
+  transition: transform 200ms;
+  transform: rotateX(70deg);
+}</code></pre>
+            <div id="rotateX">
+              <div class="example rotateX">
+                
+              </div>
+            </div>
+          </div>
+        <p class="reference">Exemplet är interaktivt, det går att ändra koden</p>
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="rotateY" contenteditable>.rotateY:hover{
+  transition: transform 200ms;
+  transform: rotateY(-70deg);
+}</code></pre>
+            <div id="rotateY">
+              <div class="example rotateY">
+                
+              </div>
+            </div>
+          </div>
+          <p class="reference">Exemplet är interaktivt, det går att ändra koden</p>
+
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="rotateZ" contenteditable>.rotateZ:hover{
+  transition: transform 200ms;
+  transform: rotateZ(30deg);
+}</code></pre>
+            <div id="rotateZ">
+              <div class="example rotateZ">
+                
+              </div>
+            </div>
+          </div>
+          <p class="reference">Exemplet är interaktivt, det går att ändra koden</p>
+        </section>
+      </section>
+
+      <!-- KEYFRAMES -->
+      <section>
+        <section>
+          <h1><em>Keyframe Animation</em></h1>
+        </section>
+        <section>
+          <p>Vi kan definiera egna animationer förutom de inbyggda</p>
+        </section>
+        <section>
+          <h1><code><em>@keyframes</em></code></h1>
+        </section>
+        <section>
+          <h3>@keyframes</h3>
+<pre class="fragment fade-in rc"><code class="language-css">@keyframes myAnimation { 
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}</code></pre>
+        <p class="fragment fade-down">I princip en transition, men vi kan t.ex. loopa övergången</p>
+        </section>
+        <section>
+<pre><code class="language-css">@keyframes myAnimation { 
+  from{
+    opacity: 0;
+    background: teal;
+  }
+  to{
+    opacity: 1;
+    background: slategray;
+  }
+}</code></pre>
+        <p>Vi får animera flera css-egenskaper</p>
+        </section>
+        <section>
+<pre><code class="language-css">@keyframes myAnimation { 
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}</code></pre>
+        <p>Vanligast är att ange steg i <code><strong>%</strong></code></p>
+        </section>
+        <section>
+<pre><code class="language-css">@keyframes myAnimation { 
+  0%{
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  100%{
+    opacity: 1;
+  }
+}</code></pre>
+        </section>
+        <section>
+          <h4>2.3.1 Three Flashes or Below Threshold</h4>
+          <blockquote>Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds. (Level A)</blockquote>
+          <a href="https://www.w3.org/TR/WCAG20/#seizure">W3C Recommendation</a>
+        </section>
+
+        <section style="font-size: 1.5rem">
+          <h3>Animation properties</h3>
+            <p><code class="fragment fade-in">animation-name</code></p>
+            <p><code class="fragment fade-in">animation-duration</code></p>
+            <p><code class="fragment fade-in">animation-timing-function</code></p>
+            <p><code class="fragment fade-in">animation-delay</code></p>
+            <p><code class="fragment fade-in">animation-iteration-count</code></p>
+            <p><code class="fragment fade-in">animation-duration</code></p>
+            <p><code class="fragment fade-in">animation-fill-mode</code></p>
+            <p><code class="fragment fade-in">animation-play-state</code></p>
+        </section>
+        <section>
+          <pre><code class="language-css">.box {
+  animation-name: myAnimation; /* previous animation */
+  animation-duration: 2s; /* play for 2s */
+  animation-delay: 1s;    /* start after 1s */
+  animation-iteration-count: infinite; /* go on forever */
+  animation-direction: normal;  /* do not reverse */
+  animation-timing-function: ease; /* ease the end and start */
+  animation-fill-mode: none; /* do not apply styles */
+  animation-play-state: running; /* start it */
+}</code></pre>
+        </section>
+        <section>
+          <p><code><strong>https://css-tricks.com/snippets/css/keyframe-animation-syntax/</strong></code></p>
+        </section>
+        <section>
+          <pre><code class="language-css">.box{
+  animation: myAnimation 2s 1s normal ease none running;
+}</code></pre>
+    <p class="fragment fade-down">De flesta värden är dock default: <br/><code>iteration-count, direction, timing-function, fill-mode, play-state</code></p>
+    <pre class="fragment fade-down"><code class="language-css">animation: myAnimation 2s 1s;</code></pre>
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="fill-animation" contenteditable>@keyframes myAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animation {
+  opacity: 0;
+  animation: myAnimation 2s infinite;
+}</code></pre>
+
+            <div id="fill-animation">
+              <div class="example animation">
+                .animation
+              </div>
+            </div>
+          </div>
+          <p class="reference">Exemplet är interaktivt, det går att ändra koden</p>
+        </section>
+        <section>
+          <div class="two-columns">
+            <pre><code class="liveCoding css language-css" data-livecoding-id="move-animation" contenteditable>@keyframes move {
+  from {
+    transform: translateX(500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.move-animation {
+  animation: move 2s forwards;
+}</code></pre>
+
+            <div id="move-animation">
+              <div class="example move-animation">
+                sup?
+              </div>
+            </div>
+          </div>
+          <p class="reference">Ladda om sidan</p>
+
+        </section>
+      </section>
+      <section>
+        <p><em>Key takeaways</em></p>
+        <p>Använd <strong>transition</strong> främst sedan animera främst dessa:</p>
+        <ul>
+          <li><code><strong> transform: translate(x,y)</strong></code></li>
+          <li><code><strong> transform: scale(1.2);</strong></code></li>
+          <li><code><strong> transform: rotate(30deg);</strong></code></li>
+          <li><code><strong> opacity: .5;</strong></code></li>
+        </ul>
+        <p>För lång animation och användaren vet inte om det händer något</p>
+        <p>För snabb animation och det känns ryckigt</p>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '80%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+    const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+    for(const editableElement of editableCodeBoxes){
+      editableElement.addEventListener('blur', function(){
+        Prism.highlightAll();
+      })
+    }
+  </script>
+</body>
+</html>

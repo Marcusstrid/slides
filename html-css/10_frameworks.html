@@ -1,0 +1,336 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="CSS-ramverk">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> CSS-ramverk </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <section>
+          <h1><strong>CSS-ramverk</strong></h1>
+        </section>
+      </section>
+      <section>
+        <section>
+          <p>Vad är ett ramverk?</p>
+          <blockquote class="fragment fade-down">A framework is a skeleton where the application defines the "meat" of the operation by filling out the skeleton. The skeleton still has code to link up the parts but the most important work is done by the application.</blockquote>
+          <a class="reference" href="https://stackoverflow.com/a/148759/5836872">https://stackoverflow.com/a/148759/5836872</a>
+        </section>
+        <section>
+          <p>I relation till CSS:</p>
+          <p><em>Färdigskrivna CSS-klasser som vi kombinerar</em></p>
+          <p class="fragment fade-down">Slipper skriva CSS själva</p>
+          <p class="fragment fade-down">Men måste förhålla oss till en färdig struktur</p>
+        </section>
+        <section>
+          <p>Ramverk</p>
+          <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" height="200" alt="Bootstrap Logo">
+          <img src="https://cdn.worldvectorlogo.com/logos/semantic-ui.svg" width="200" height="auto">
+          <img src="https://foundation.zurb.com/assets/img/develop/contribute/logo-yeti.gif" height="200" width="200">
+        </section>
+        <section data-transition="none">
+            <p><em>Kärnan i alla ramverk</em></p>
+        </section>
+        <section data-transition="none" data-background-image="https://i.imgur.com/Yd1h7dX.png">
+          <p><em>Kärnan i alla ramverk</em></p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Bootstrap</em></h1>
+        </section>
+        <section>
+          <p>Inkludera bootstrap i projekt</p>
+          <pre><code class="language-html">&lt;head&gt;
+  &lt;link 
+  rel=&quot;stylesheet&quot; 
+  href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css&quot;&gt;    
+&lt;/head&gt;</code></pre>
+        <a href="https://getbootstrap.com/">https://getbootstrap.com/</a>
+        </section>
+        <section data-background-image="https://designmodo.com/wp-content/uploads/2015/10/11.png">
+          <a class="reference" href="https://getbootstrap.com/docs/4.0/layout/grid/">https://getbootstrap.com/docs/4.0/layout/grid/</a>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-12&quot;&gt;
+      &lt;p&gt;Jag tar upp hela bredden&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p><code><em>col</em></code> måste alltid ligga i en <code><em>row</em></code></p>
+        <p><code><em>container</em></code> gör så att raden inte tar upp hela sidan</p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-6&quot;&gt;
+      &lt;p&gt;Jag tar upp halva bredden&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-6&quot;&gt;
+      &lt;p&gt;Jag tar upp halva bredden&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>6 + 6 = 12</p>
+        </section>
+        <section>
+          <p><strong>Breakpoints</strong></p>
+          <ul >
+            <li><em>Extra small</em>  <576px</li>
+            <li><em>Small</em> ≥576px</li>
+            <li><em>Medium</em> - ≥768px</li>
+            <li><em>Large</em> - ≥992px</li>
+            <li><em>Extra large</em> ≥1200px</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3&quot;&gt;
+      &lt;p&gt; I am responsive, whole page on small devices, 
+          scale up to 1/2 screen, 1/3 screen and 1/4 screen
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-xs-12 col-md-6 col-lg-4&quot;&gt;
+      &lt;p&gt; I am responsive, whole page on small devices, 
+          scale up to 1/2 screen, 1/3 screen and 1/4 screen
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>Behöver inte använda samtliga breakpoints</p>
+        </section>
+        <section>
+          <h4><strong>Bootstrap + Flexbox</strong></h4>
+        </section>
+        <section>
+          <ul style="list-style-type: none;">
+            <li><code>.justify-content-start</code></li>
+            <li><code>.justify-content-center</code></li>
+            <li><code>.justify-content-end</code></li>
+            <li><code>.justify-content-around</code></li>
+            <li><code>.justify-content-between</code></li>
+          </ul>
+          <a class="reference" href="https://getbootstrap.com/docs/4.0/layout/grid/">https://getbootstrap.com/docs/4.0/layout/grid/</a>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row justify-content-center&quot;&gt;
+    &lt;div class=&quot;col-4&quot;&gt;
+      One column centered
+    &lt;/div&gt;
+  &lt;/div&gt;</code></pre>
+        </section>
+        <section>
+          <ul>
+            <li><code>.align-items-start </code></li>
+            <li><code>.align-items-center </code></li>
+            <li><code>.align-items-end </code></li>
+          </ul>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row align-items-start justify-content-center&quot;&gt;
+    &lt;div class=&quot;col&quot;&gt;
+      Vertical and horizontal center of div
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <pre><code class="language-css">.row {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}</code></pre>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;&lt;/div&gt; 
+  &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;           
+&lt;/div&gt;</code></pre>
+        <p>Containern kan omsluta flera divs, sätt inte <em><code>container</code></em> runt alla <code><em>.row</em></code></p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-9&quot;&gt;.col-9&lt;/div&gt;
+  &lt;div class=&quot;col-4&quot;&gt;.col-4&lt;/div&gt;
+  &lt;div class=&quot;col-6&quot;&gt;.col-6&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <img src="https://i.imgur.com/xeWX4jo.png">
+        </section>
+        <section>
+          <p><em>Responsiva bilder</em></p>
+          <pre><code class="language-html">&lt;img src=&quot;...&quot; class=&quot;img-fluid&quot; alt=&quot;Responsive image&quot;&gt;
+</code></pre> 
+          <p><code><em>.img-fluid</em></code></p>
+          <a class="reference" href="https://getbootstrap.com/docs/4.0/content/images/">https://getbootstrap.com/docs/4.0/content/images/</a>
+        </section>
+        <section>
+          <h2><strong>Components</strong></h2>
+        </section>
+        <section>
+          <p>Största anledningen till att jag ofta drar in ett ramverk</p>
+          <p><em>FORMS / INPUTS</em></p>
+          <p class="fragment fade-down">I nästan allt finns något sorts inputfält som är jävla jobbigt att styla</p>
+        </section>
+        <section>
+          <p><strong>Forms</strong></p>
+          <p>Label + input grupperas med en div med klassen <code><strong>form-group</strong></code></p>
+          <p>Själva inputfältet stylas med klassen <code><strong>form-control</strong></code></p>
+          <p>Knappar stylas med <code><em>btn</em></code></p>
+          <a class="reference">https://getbootstrap.com/docs/4.0/components/forms/</a>
+        </section>
+        <section>
+          <img src="https://i.imgur.com/p2EFrc0.png">
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;input&quot;&gt;Input&lt;/label&gt;
+    &lt;input 
+      type=&quot;input&quot;
+      class=&quot;form-control&quot; 
+      id=&quot;input&quot;
+      placeholder=&quot;Enter input&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+        <section>
+          <p>The Holy Navbar</p>
+          <p>Bootstrap kommer med en inbyggd responsiv navbar (med jQuery)</p>
+          <a href="https://getbootstrap.com/docs/4.0/components/navbar/">https://getbootstrap.com/docs/4.0/components/navbar/</a>
+        </section>
+        <section>
+          <p>Cards</p>
+          <img src="https://i.imgur.com/MxNCGjY.png">
+          <a class="reference" href="https://getbootstrap.com/docs/4.0/components/card/">https://getbootstrap.com/docs/4.0/components/card/</a>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;card&quot; style=&quot;width: 18rem;&quot;&gt;
+  &lt;img class=&quot;card-img-top&quot; src=&quot;...&quot; alt=&quot;Card image cap&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h5 class=&quot;card-title&quot;&gt;Card title&lt;/h5&gt;
+    &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#039;s content.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn btn-primary&quot;&gt;Go somewhere&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+        <section>
+          <p><strong>Hjälpklasser</strong></p>
+          <a href="https://getbootstrap.com/docs/4.0/utilities/borders/">https://getbootstrap.com/docs/4.0/utilities/borders/</a>
+        </section>
+        <section>
+          <p>Lägga till extra spacing</p>
+          <ul>
+            <li><code><em>.p-2</em></code> - padding-3</li>
+            <li><code><em>.m-2</em></code> - margin-2</li>
+            <li><code><em>.mt-2</em></code> - margin-top-2</li>
+            <li><code><em>.mb-6</em></code> - margin-bottom-6</li>
+            <li><code><em>.mx-6</em></code> - margin-left-right-6</li>
+            <li><code><em>.my-6</em></code> - margin-top-bottom-6</li>
+          </ul>
+          <section>
+            
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><em>Andra ramverk</em></h1>
+        </section>
+        <section>
+          <p><strong>Unopinionated/Opinionated Frameworks</strong></p>
+          <p class="fragment fade-down">Hur mycket får vi med i paketet?</p>
+          <p class="fragment fade-down">Antar ramverket att vi vill koda mycket själva?</p>
+        </section>
+        <section>
+          <p>Funktionella ramverk</p>
+          <ul>
+            <li><a href="https://tailwindcss.com/docs/what-is-tailwind/">Tailwin</a></li>
+            <li><a href="http://tachyons.io/">Tachyons</a></li>
+          </ul>
+          <p>Fine grain control, kan styra det mesta på detaljnivå</p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <p><strong>Övning: återskapa sida</strong></p>
+          <p>Ensam eller i par</p>
+          <p>Jag har skapat en färdig hemsida i bootstrap som demonstrerar lite olika element och som är <em>responsiv</em></p>
+          <p><em>Ni ska återskapa denna sida utan att kolla på koden och med hjälp av bootstraps dokumentation.</em>
+          <p><strong>Fokus ska ligga på grid-systemet: <code>.col-</code></strong></p>
+          <p><a href="https://github.com/fend17/bootstrap-exercise">https://github.com/fend17/bootstrap-exercise</a></p>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '90%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+    const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+    for(const editableElement of editableCodeBoxes){
+      editableElement.addEventListener('blur', function(){
+        Prism.highlightAll();
+      })
+    }
+  </script>
+</body>
+</html>

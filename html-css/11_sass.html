@@ -1,0 +1,332 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="SASS">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> SASS </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal section img {
+      background: none; box-shadow: none;"
+    }
+    .reveal .intro-text {
+      text-shadow: 1px 1px 0 hsl(330, 50%, 45%),
+      2px 2px 0 hsl(330, 50%, 45%),
+      3px 3px 0 hsl(330, 50%, 45%),
+      4px 4px 0 hsl(330, 50%, 45%),
+      5px 5px 0 hsl(330, 50%, 45%),
+      6px 6px 0 hsl(330, 50%, 45%),
+      7px 7px 0 hsl(330, 50%, 45%),
+      8px 8px 0 hsl(330, 50%, 45%),
+      9px 9px 0 hsl(330, 50%, 45%),
+      10px 10px 0 hsl(330, 50%, 45%)
+    }
+    .reveal .two-columns{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .reveal .two-columns > * {
+      flex: 1;
+      margin: 0 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background="hsl(330, 50%, 55%)"> 
+          <h1 class="intro-text">SASS</h1>
+          <p class="intro-text">Syntactically Awesome Style Sheets</p>
+        </section> 
+        <section>
+          <p>SASS är ett <code><strong>superset</strong></code> av CSS</p>
+          <p>SASS kan allt som CSS kan + mer</p>
+          <p class="fragment fade-down">Det betyder att du kan skriva vanlig CSS i SASS</p>
+        </section>
+        <section>
+          <p>Med sass får vi:
+            <ul>
+              <li><code><em>variabler</em></code></li>
+              <li><code><em>funktioner</em></code></li>
+              <li><code><em>loopar</em></code></li>
+              <li>Samt skitmycket mer</li>
+            </ul>
+          </section>
+          <section>
+            <p>All <code>sass</code> konverteras till vanlig <code>css</code></p>
+            <p>SASS är en såkallad <em>preprocessor</em> processar alltid koden innan den används.</p>
+          </section>
+          <section>
+            <p><em>Syntax för SASS</em></p>
+            <pre class="fragment fade-in"><code class="language-css">.container{
+  background: hsl(330, 50%, 55%);
+}</code></pre>
+            <p class="fragment fade-in">Även fast vi använder sass behöver vi inte använda dess funktioner..</p>
+            <p class="fragment fade-in">...men vi ska använda dem</p>
+          </section>
+          <section>
+            <p><em>Filändelser</em></p>
+            <p class="fragment fade-in">Standard filändelse: <code><strong>.scss</strong></code></p>
+            <p class="fragment fade-in">Kan förekomma den äldre versionen: <code><strong>.sass</strong></code></p>
+          </section>
+          <section>
+            <p><em>.sass</em> syntax</p>
+            <pre class="fragment fade-in"><code class="language-scss">.container
+  background: hsl(330, 50%, 55%)
+  color: #f0c;
+.item
+  letter-spacing: .5em;</code></pre>
+            <p class="fragment fade-in">Indenteringbaserad, behöver inga brackets eller semikolon 🤡😒</p>
+          </section>
+          <section>
+            <p><em><code>.scss</code></em> syntax</p>
+            <pre class="fragment fade-in rc"><code class="language-css">.container{
+  background: hsl(330, 50%, 55%);
+}</code></pre>
+            <p class="fragment fade-in">"Vanlig syntax"</p>
+          </section>
+          <section><p>Get to the point</p></section>
+        </section>
+        <section>
+          <section>
+            <p><strong>Basics</strong></p>
+            <ul>
+              <li>Nesting</li>
+              <li>Imports & Organization</li>
+              <li>variables</li>
+              <li>Math & Color Utilities</li>
+            </ul>
+          </section>
+          <section>
+            <p><code><strong>$variabler</strong></code></p>
+            <pre class="fragment fade-in"><code class="language-scss">/* variables uses dollar sign: $ 🤑 */
+$primary-color: hsl(330, 50%, 55%);
+.container {
+  background: $primary-color;
+}</code></pre>
+        </section>
+        <section>
+          <p>Kan vara alla olika egenskaper</p>
+          <pre class="fragment fade-in rc"><code class="language-scss">$full-width: 100%;
+.container{
+  width: $full-width;
+}</code></pre>
+      </section>
+      <section>
+        <p>Kan kombineras</p>
+        <pre class="fragment fade-in rc"><code class="language-scss">/* Doesn't have to be kebab-case */
+$x-margin: 2rem;
+$y-margin: 0rem;
+
+.container{
+  margin: $y-margin $x-margin;
+}</code></pre>
+    </section>
+    <section>
+      <p>Variabler i variabler</p>
+      <pre><code class="language-scss">$main-padding: 2rem;
+$super-padding: $main-padding * 2;</code></pre>
+      <p>Sass förvandlar CSS till mer av ett programmeringsspråk</p>
+    </section>
+  </section>
+
+
+  <!-- NESTING -->
+  <section>
+    <section>
+      <h1><em>Nesting</em></h1>
+    </section>
+    <section>
+      <pre><code class="language-css">nav {
+  background-color: #659;
+}
+
+nav a{
+  color: #fff;
+}</code></pre>
+    <p>Väljer alla <code>a</code>-element i <code>nav</code></p>
+    <p>Vi måste skapa nya regler</p>
+  </section>
+  <section>
+    <h2>SASS nesting</h2>
+    <div class="two-columns">
+      <pre><code class="language-scss">nav{
+  background-color: #659;
+  a{
+    color: #fff;
+  }
+}</code></pre>
+  <pre class="fragment fade-in rc"><code class="language-css">/* i style.css */
+nav {
+  background-color: #659;
+}
+
+nav a{
+  color: #fff;
+}</code></pre>
+
+    </div>  
+  </section>
+  <section>
+    <p>SASS ampersand (&)</p>
+    <div class="two-columns">
+      <pre><code class="language-css">/* main.scss */
+a{
+  color: #222;
+  &:hover {
+    color: #659;
+  }
+}</code></pre>
+      <pre><code class="language-css">/* output */
+a{
+  color: #222;
+}
+a:hover {
+  color: #659;
+}</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>sass ampersand</h2>
+    <pre><code class="language-scss">/* main.scss */
+.box{
+  color: marine;
+  &-article{
+    color: #fff;
+  }
+}</code></pre>
+  </section>
+  <section>
+    <pre><code class="language-scss">nav{
+  li{
+    a{
+      em{
+        span{
+          color: #659;
+        }
+      }
+    }
+  }
+}</code></pre>
+  <p>Använd inte tomma selectorer och nästa inte för djupt</p>
+  </section>
+  <section>
+    <p>Alternativ: <code><em>@extend</em></code></p>
+    <pre><code class="language-scss">.message {
+  width: 90%;
+  height: 5rem;
+  padding: 2rem;
+}
+.message-danger {
+  @extend .message;
+  color: red;
+  background-color: red;
+}</code></pre>
+  </section>
+  <section>
+    <p>Kan kombineras med <code><em>placeholders</em></code></p>
+    <pre><code class="language-scss">%message {
+  width: 90%;
+  height: 5rem;
+  padding: 2rem;
+}
+.message-danger {
+  @extend %message;
+  color: red;
+  background-color: red;
+}</code></pre>
+  </section>
+</section>
+  <!-- PARTIALS -->
+  
+  <section>
+    <section>
+      <h1><strong>Partials</strong></h1>
+    </section>
+    <section>
+      <p>Vi behöver inte ha allt i samma <code class="black-background">.css</code>-fil</p>
+        <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/main.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/shame.css&quot;&gt;</code></pre>
+    </section>
+    <section>
+      <p>Lättare med sass</code></p>
+      <pre class="fragment fade-in rc"><code class="language-css">/* i main.scss */
+@import "shame";
+body{
+  /* Style goes here */
+}</code></pre>
+    </section>
+    <section>
+      <h3>_partials</h3>
+      <p>Partials börjar med <code class="black-background">_</code>: <code class="black-background">_shame.scss</code></p>
+      <p>Vi behöver inte inkludera varken <code>_</code> eller <code class="black-background">.scss</code> när vi använder <code class="black-background">@import</code></p>
+      <p>NEJ till @import i CSS, JA till @import i SCSS</p>
+    </section>
+    <section>
+      <ul>
+        <li><code><em>_variables.scss</em></code></li>
+        <li><code><em>_layout.scss</em></code></li>
+        <li><code><em>_sidebar.scss</em></code></li>
+        <li><code><em>_navbar.scss</em></code></li>
+      </ul>
+    </section>
+  </section>
+  <section>
+    <section>
+      <p>Eftermiddagen: <em>övningar i sass</em></p>
+      <p>Finns på Studentportalen samt GitHub</p>
+      <a href="https://github.com/fend17/sass-exercise">https://github.com/fend17/sass-exercise</a>
+    </section>
+  </section>
+
+</div>
+</div>
+<!-- reveal.js scripts -->
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    transition: 'zoom',
+    height: '80%',
+    width: '70%',
+    controls: true,
+    progress: true,
+    history: true,
+    keyboard: true,
+    overview: true,
+    center: true,
+    dependencies: [
+    { src: 'lib/js/classList.js',condition: function (){
+      return !document.body.classList;}},
+      { src: 'plugin/notes/notes.js', async: true },
+      {src : 'lib/prismjs/prism.js'},
+      {src : 'js/print.js'},
+      { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+      ]
+    });
+
+  const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+  for(const editableElement of editableCodeBoxes){
+    editableElement.addEventListener('blur', function(){
+      Prism.highlightAll();
+    })
+  }
+</script>
+</body>
+</html>

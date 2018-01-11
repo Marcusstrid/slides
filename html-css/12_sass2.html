@@ -1,0 +1,198 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="SASS Part 2">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> SASS Part 2 </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal .intro-text {
+      text-shadow: 1px 1px 0 hsl(330, 50%, 45%),
+      2px 2px 0 hsl(330, 50%, 45%),
+      3px 3px 0 hsl(330, 50%, 45%),
+      4px 4px 0 hsl(330, 50%, 45%),
+      5px 5px 0 hsl(330, 50%, 45%),
+      6px 6px 0 hsl(330, 50%, 45%),
+      7px 7px 0 hsl(330, 50%, 45%),
+      8px 8px 0 hsl(330, 50%, 45%),
+      9px 9px 0 hsl(330, 50%, 45%),
+      10px 10px 0 hsl(330, 50%, 45%)
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+        
+        <section>
+          <section data-background="hsl(330, 50%, 55%)">
+            <h1 class="intro-text">SASS</h1>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1><em>Mixins</em></h1>
+          </section>
+          <section>
+            <p>Mixins är som funktioner</p>
+            <p>låter oss gruppera och återanvända vanligt förekommande kod</p>
+            <pre><code class="language-scss">@mixin mixin-name {
+  border-radius: 8px;
+  padding: 2rem;
+}</code></pre>
+            <pre><code class="language-scss">.article {
+  @include mixin-name;
+}</code></pre>
+          </section>
+          <section>
+            <p>Eller låter oss gömma undan kod</p>
+            <pre><code class="language-scss">@mixin flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+}</code></pre>
+          <pre><code class="language-scss">.article{
+  @include flex;
+}</code></pre>
+          </section>
+          <section>
+            <p>Mixins tar <em>argument</em></p>
+            <pre><code class="language-scss">@mixin flex($direction){
+  display: flex;
+  flex-direction: $direction;
+}</code></pre>
+          <pre><code class="language-scss">.article{
+  @include flex(column);
+}</code></pre>
+          </section>
+          <section>
+            <p>Låter oss även sätta defaults</p>
+            <pre><code class="language-scss">@mixin flex($direction: row){
+  display: flex;
+  flex-direction: $direction;
+}</code></pre>
+          <pre><code class="language-scss">.wrapper {
+  @include flex(column);
+}
+.article {
+  @include flex;
+}</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1><em>Media queries</em></h1>
+          </section>
+          <section>
+            <pre><code class="language-scss">.article {
+  width: 100%;
+  @media (min-width: 756px){
+    width: 50%;
+  }
+}</code></pre>
+          <p>Låter oss mer överskådligt se vilka brytpunkter som ett visst element har</p>
+          </section>
+          <section>
+            <pre><code class="language-scss">$tablet: 756px;
+
+.article {
+  width: 100%;
+  @media (min-width: $tablet){
+    width: 50%;
+  }
+}</code></pre>
+          <p>Ersätt pixelvärdet med en variabel för att lättare se och ändra värdet</p>
+          </section>
+          <section>
+            <pre><code class="language-scss">$tablet: "(min-width: 756px)";
+
+.article {
+  width: 100%;
+  @media #{$tablet}{
+    width: 50%;
+  }
+}</code></pre>
+          <p>Vi kan lägga hela vårt condition som en sträng och interpolera det i vår media query.</p>
+          </section>
+          <section>
+            <p>Kan bli riktigt trixig med mixins + media queries</p>
+            <pre><code class="language-scss">$desktop:  "(min-width: 756px)";
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+</code></pre>
+<pre><code class="language-scss">.article {
+  width: 100%;
+  @include desktop {
+    width: 50%;
+  }
+}</code></pre>
+          </section>
+          <section>
+            <p>Att tänka på</p>
+            <p>Koden blir autogenererad, kan skapa väldigt mycket kod om vi blir för avancerade</p>
+            <p>Se över koden som produceras ibland och se vad som händer.</p>
+          </section>
+        </section>
+
+        <section>
+          <p><em>Eftermiddagen: strukturera om CSS</em></p>
+          <a href="https://github.com/fend17/sass-exercise-2">https://github.com/fend17/sass-exercise-2</a>
+          <p>Den slutliga gruppexaminationen är även upplagd på Studentportalen samt GitHub</p>
+        </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '80%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+    const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+    for(const editableElement of editableCodeBoxes){
+      editableElement.addEventListener('blur', function(){
+        Prism.highlightAll();
+      })
+    }
+  </script>
+</body>
+</html>

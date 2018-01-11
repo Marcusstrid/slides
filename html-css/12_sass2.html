@@ -136,7 +136,7 @@
             <pre><code class="language-scss">$desktop:  "(min-width: 756px)";
 
 @mixin desktop {
-  @media (min-width: #{$desktop}) {
+  @media #{$desktop} {
     @content;
   }
 }

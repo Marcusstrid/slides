@@ -1,0 +1,312 @@
+<html>
+<head>
+  <base href="https://jesperorb.github.io/revealjs/">
+  <!-- <base href="file:///Users/jesperorb/projects/revealjs/"> -->
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/default.css">
+  <link rel="stylesheet" type="text/css" href="lib/prismjs/prism.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/base16-oceanicnext.dark.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Checklist">
+  <meta name="author" content="jesperorb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title> Checklist </title>
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style type="text/css">
+    .reveal .two-columns{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .reveal .two-columns > * {
+      flex: 1;
+      margin: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+        <h1><strong>Checklist</strong></h1>
+      </section>
+
+      <section>
+        <section>
+          <p><em>Code smell</em></p>
+          <blockquote>Code smell, also known as bad smell, in computer programming code, refers to any symptom in the source code of a program that <em>possibly indicates a deeper problem.</em></blockquote>
+          <p>Behöver inte vara ett problem, men kan indikera ett problem</p>
+        </section>
+        <section>
+          <p>Harry Roberts, csswizardry.com säger:</p>
+          <p>Både <code><strong>@extend</strong></code> och <code><strong>&amp;</strong></code> är code smells</p>
+          <p class="fragment fade-down">Jag håller inte helt med men man kanske borde lyssna på en <em>award-winning Consultant Front-end Architect</em> ¯\_(ツ)_/¯</p>
+          <a class="reference" href="https://csswizardry.com/2017/02/code-smells-in-css-revisited/">https://csswizardry.com/2017/02/code-smells-in-css-revisited/</a>
+        </section>
+        <section>
+          <p>Ta bort styling</p>
+          <div class="two-columns">
+            <pre><code class="language-scss">/* Don't */
+h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ccc;
+}
+
+.no-border {
+    padding-bottom: 0;
+    border-bottom: none;
+}</code></pre>
+            <pre><code class="language-scss">/* Do */
+h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.border {
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ccc;
+}</code></pre>
+          
+          <a class="reference" href="https://csswizardry.com/2012/11/code-smells-in-css/">https://csswizardry.com/2012/11/code-smells-in-css/</a>
+          </div>
+          <p>Bad: "Writing more CSS to achieve less styling."</p>
+        </section>
+        <section>
+          <p><em>Qualified selectors</em></p>
+          <div class="two-columns">
+            <pre><code class="language-css">/* Don't */
+ul.nav {}
+a.button {}
+div.header {}</code></pre>
+            <pre><code class="language-css">/* Do */
+.nav {}
+.button {}
+.header {}</code></pre>
+          </div>
+          <p>Ökar specificiteten och binder klassen till en tagg</p>
+        </section>
+        <section>
+          <p>Farligt generella selektorer</p>
+          <div class="two-columns">
+            <pre><code class="language-scss">header {
+  background-color: #f0c;
+}</code></pre>
+          <pre><code class="language-scss">.main-header{
+  background-color: #f0c;
+}</code></pre>
+          </div>
+          <p>Inte optimalt om vi ska använda <code>&lt;header&gt;</code> på andra ställen</p>
+        </section>
+        <section>
+          <p><em>Hårdkodad värden</em></p>
+          <div class="two-columns">
+            <pre><code class="language-scss">/* Don't */
+h1 {
+    font-size: 24px;
+    line-height: 32px;
+}</code></pre>
+            <pre><code class="language-scss">/* Do */
+h1 {
+  font-size: 1.5em; /* font-size: 24px */
+  line-height: 1.5;
+}</code></pre>
+          </div>
+        </section>
+        <section>
+          <p><strong>Magiska nummer</strong></p>
+          <pre><code class="language-scss">.nav-link{
+  width: 124px;
+  height: 37px;
+  padding: 1rem 12px;
+}</code></pre>
+        <p>När man bara plockar random värden för att det ser bra ut för stunden, tillfällig lösning.</p>
+        <p class="fragment fade-down"><em>Sätt varibler och förhåll dig till dessa variabler med konsekvent ökning</em></p>
+        </section>
+        <section>
+          <p><strong>Namngivning</strong></p>
+          <ul>
+            <li>Engelska i kommentarer & namn</li>
+            <li>Använd någon casing, <em>hypen-case</em> är vanligt</li>
+          </ul>
+          <div class="two-columns">
+            
+            <pre><code class="language-css">/* Stylingen till sektionen med tjänster */
+.tjänster{ }
+.aboutussection {}</code></pre>
+<pre><code class="language-css">/* Styles the 'Tjänster' section */
+.services-section{
+  background-color: #f0c;
+}
+.servicesSection {}
+.services_section {}
+.ServicesSection {}
+.SERVICES_SECTION {} /* 😱 */
+.😱 {} /* smileys work, but avoid?? */</code></pre>
+          </div>
+        </section>
+        <section>
+          <p><em>Forms</em></p>
+          <pre><code class="language-html">&lt;form&gt;
+  &lt;label for=&quot;username&quot;&gt;Username&lt;/label&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;username&quot; placeholder=&quot;Username&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Skicka&quot;&gt;
+&lt;/form&gt;</code></pre>
+        <p>Glöm inte <code><em>for</em></code> och glöm inte <code><em>id</em></code></p>
+        <p>Placeholder räcker inte alltid även om det är snyggt</p>
+        </section>
+        <section>
+          <p><strong>Filstruktur</strong></p>
+          <div class="two-columns">
+            <img src="https://i.imgur.com/1PVKdK6.png" width="300">
+            <img src="https://i.imgur.com/WfR6BI2.png" width="300">
+          </div>
+        </section>
+        <section>
+          <p><strong>Bilder/video</strong></p>
+          <ul>
+            <li>Använd <em>SVG</em> när du kan</li>
+            <li>Komprimera bilderna</li>
+            <li>ImageOptim / Photoshop</li>
+            <li>Tänk på filstorleken och hur stor bilden behöver vara</li>
+          </ul>
+        </section>
+        <section>
+          <p><strong>Usage rights</strong></p>
+          <p>Använd Googles inbyggda sökfiltrering</p>
+          <img src="https://i.imgur.com/cJtv8gF.png" alt="Old man yelling at clouds">
+        </section>
+        <section>
+          <p><a href="https://github.com/thedaviddias/Front-End-Checklist">https://github.com/thedaviddias/Front-End-Checklist</a></p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h1><strong>Modulär CSS-arkitektur</strong></h1>
+        </section>
+        <section>
+          <p>Vi plockar ut repeterande kod till olika "objekt"</p>
+          <ul style="text-align: left; line-height: 2; font-size: 1.6rem;">
+          <li><em>Objects / Modules / Blocks</em></li>
+          <li><code>.header, .footer, .comment, .button, etc.</code>
+          </li>
+          <li><em>Parent - Child Relationships</em></li>
+          <li><code>.media, .media__img, .media__body, etc.</code></li>
+          <li><em>Modifiers & States</em></li>
+          <li><code>.btn--primary, .btn--small, .btn.is-selected, etc.</code></li>
+        </section>
+        <section>
+          <ul>
+            <li><em>BEM</em></li>
+            <li><em>OOCSS</em></li>
+            <li><em>SMACSS</em></li>
+          </ul>
+          <p><a href="https://codepen.io/hidanielle/post/css-methodologies-naming-conventions-and-file-structures">https://codepen.io/hidanielle/post/css-methodologies-naming-conventions-and-file-structures</a></p>
+        </section>
+        <section>
+          <p>BEM</p>
+          <pre><code class="language-css">.block {}
+.block__element {}
+.block--modifier {}</code></pre>
+          <a href="https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/" class="reference">https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/</a>
+        </section>
+        <section>
+          <pre><code class="language-scss">.header {}
+.header__image { }
+.header__text { }
+.header__text--small { }</code></pre>
+          <p><code><em>.header__image</em></code> hör till <code><em>.header</em></code></p>
+          <p>En variation (state) visar vi med <code><em>--modifier</em></code></p>
+        </section>
+        <section>
+          <pre><code class="language-html">&lt;div class=&quot;header&quot;&gt;
+  &lt;img src=&quot;&quot; class=&quot;header__image&quot; /&gt;
+  &lt;p class=&quot;header__text--small&quot;&gt;Header text&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+        <section>
+          <p>SMACSS</p>
+          <ul>
+            <li>Base — Nothing needed</li>
+            <li>Layout — l- or layout- prefixes</li>
+            <li>State — is- prefix as in is-active or is-hidden</li>
+            <li>Module — Modules just use module name .messsage </li>
+            <li>Theme - if you have a theme</li>
+          </ul>
+          <p><a href="https://smacss.com/">https://smacss.com/</a></p>
+        </section>
+        <section>
+          <h3><em>OOCSS</em></h3>
+          <p>Object Oriented CSS</p>
+        </section>
+        <section>
+          <p><strong>1. Separate structure and skin</strong></p>
+          <blockquote>This means to define repeating visual features (like background and border styles) as separate “skins” that you can mix-and-match with your various objects to achieve a large amount of visual variety without much code. See the module object and its skins.</blockquote>
+        </section>
+        <section>
+          <p><strong>Separate container and content</strong></p>
+          <blockquote>Essentially, this means “rarely use location-dependent styles”. An object should look the same no matter where you put it. So instead of styling a specific &lt;h2&gt; with .myObject h2 {...}, create and apply a class that describes the &lt;h2&gt; in question, like &lt;h2 class=&quot;category&quot;&gt;.</blockquote>
+        </section>
+        <section>
+          <pre><code class="language-css">body {
+  background-color: white; /* defaults */
+}
+
+.module {
+  height: 5rem; /* Module */
+  width: 5rem;
+}
+
+.skin {
+  background-color: lightcoral; /* Skin */
+}
+.is-disabled {} </code></pre>
+        <pre><code class="language-html">&lt;div class=&quot;module skin is-disabled&quot;&gt;&lt;/div&gt;</code></pre>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <!-- reveal.js scripts -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      transition: 'zoom',
+      height: '80%',
+      width: '70%',
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      center: true,
+      dependencies: [
+      { src: 'lib/js/classList.js',condition: function (){
+        return !document.body.classList;}},
+        { src: 'plugin/notes/notes.js', async: true },
+        {src : 'lib/prismjs/prism.js'},
+        {src : 'js/print.js'},
+        { src: 'plugin/livecoding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }}
+        ]
+      });
+
+    const editableCodeBoxes = document.getElementsByClassName('liveCoding');
+    for(const editableElement of editableCodeBoxes){
+      editableElement.addEventListener('blur', function(){
+        Prism.highlightAll();
+      })
+    }
+  </script>
+</body>
+</html>
